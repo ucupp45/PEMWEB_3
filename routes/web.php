@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
-
+use App\Http\Controllers\guruController;
 
 Route::get('/admin', [adminController::class, 'index']);
 Route::get('/ortu', [ortuController::class, 'index']);
 Route::post('/siswa/store', [ortuController::class, 'store']);
+Route::get('/dash_guru', [guruController::class, 'index']);
 
 Route::get('/', function () {
     return view('home', [
