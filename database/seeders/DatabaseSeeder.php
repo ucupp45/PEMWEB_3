@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
     $this->call([
         SiswaSeeder::class,
     ]);
+
+    $this->call([
+        GuruSeeder::class, // Menambahkan GuruSeeder
+    ]);
 }
 
 }

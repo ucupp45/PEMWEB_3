@@ -68,9 +68,4 @@ class ortuController extends Controller
         return back()->withErrors(['login' => 'NIK atau Password salah.']);
     }
 
-    public function logout(Request $request)
-    {
-        $request->session()->forget('siswa');
-        return redirect()->route('home')->with('success', 'Berhasil logout.');
-    }
 }
