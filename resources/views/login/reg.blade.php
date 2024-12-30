@@ -68,6 +68,6 @@
             <!-- Tombol Registrasi -->
             <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Registrasi</button>
         </form>
-        <small class="d-block text-center mt-2 mb-5">Jika sudah registrasi klik <a href="/login">Login</a></small>
+        <small class="d-block text-center mt-2 mb-5">Jika sudah registrasi klik <a href="/ortu">Login</a></small>
     </main>
 @endsection
