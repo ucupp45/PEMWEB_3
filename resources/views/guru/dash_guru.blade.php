@@ -8,12 +8,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/signin.css">
-    <title>SIMPA | Dashboard Guru </title>
+    <title>SIMPA | {{$title}}</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="#">Dashboard Guru</a>
+          <a class="navbar-brand" href="#">{{$title}}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,11 +21,10 @@
             <ul class="navbar-nav ms-auto ">
                <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Menu
+                  Akun
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="/">Home</a></li>
-                    <li><a class="dropdown-item" href="/reg">Akun</a></li>
+                    <li><a class="dropdown-item" href="/">Kelola Akun</a></li>
                     <li><a class="dropdown-item" href="/reg">Logout</a></li>
                 </ul>
               </li>
@@ -34,6 +33,7 @@
         </div>
       </nav>
 <div class="container mt-5">
+    @yield('container')
 </div>
     
 

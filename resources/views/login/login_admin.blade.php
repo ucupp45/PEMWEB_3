@@ -1,31 +1,27 @@
 @extends('layouts.main')
 
 @section('container')
+    <main class="form-signin text-center">
+        <h1 class="h3 fw-normal">Login Admin</h1>
+        <form method="POST" action="{{ route('admin.login.submit') }}">
+            @csrf
 
-<main class="form-signin text-center">
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
-    <form>
-      {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
-  
-      <div class="form-floating mt-5">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-      </div>
-  
-      {{-- <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div> --}}
-      <button class="w-100 btn btn-lg btn-primary mt-5" type="submit">Login</button>
-      {{-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> --}}
-    </form>
-  </main>
+            <!-- NIK -->
+            <div class="form-floating mt-1">
+                <input type="text" class="form-control" id="nik" name="nik" placeholder="1234567890123456" required>
+                <label for="nik">NIK</label>
+            </div>
 
+            <!-- Password -->
+            <div class="form-floating mt-1">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                <label for="password">Password</label>
+            </div>
 
-
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Login</button>
+            <small class="d-block text-center mt-2">
+              Belum memiliki akun? <a href="/reggg">Registrasi</a>
+          </small>
+        </form>
+    </main>
 @endsection
