@@ -120,7 +120,7 @@
     </nav>
     <!-- Main Content -->
     <div class="container mt-5">
-        <h1>Selamat datang di SIMPA</h1>
+        <h1>Selamat datang di SIMPA!</h1>
         <p>Konten utama halaman akan muncul di sini.</p>
     </div>
 
