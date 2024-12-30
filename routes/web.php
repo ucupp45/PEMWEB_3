@@ -28,3 +28,6 @@ Route::get('/teknisi', function () {
 Route::get('/reg', function () {
     return view('login.reg', ['title' => 'Registrasi']);
 });
+Route::get('/home', function () {
+    return view('home');
+});
