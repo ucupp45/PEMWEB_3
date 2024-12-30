@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\TeknisiController;
 
 // Rute untuk login dan registrasi
 
@@ -36,6 +37,9 @@ Route::get('/regg', function () {
 Route::get('/reggg', function () {
     return view('login.regadmin', ['title' => 'Registrasi']);
 });
+Route::get('/regggg', function () {
+    return view('login.regteknisi', ['title' => 'Registrasi']);
+});
 
 
 Route::get('/guru', [GuruController::class, 'index']);
@@ -52,3 +56,11 @@ Route::get('/login', [adminController::class, 'showLoginForm'])->name('admin.log
 Route::post('/login/admin', [adminController::class, 'login'])->name('admin.login.submit');
 Route::post('/logout/admin', [adminController::class, 'logout'])->name('admin.logout'); // Logout admin
 
+
+
+Route::get('/teknisi', [TeknisiController::class, 'index']);
+Route::get('/dash_teknisi', [TeknisiController::class, 'dash_teknisi'])->name('teknisi.dash_teknisi');
+Route::post('/teknisi/store', [TeknisiController::class, 'store']);
+Route::get('/login', [TeknisiController::class, 'showLoginForm'])->name('teknisi.login');
+Route::post('/login/teknisi', [TeknisiController::class, 'login'])->name('teknisi.login.submit');
+Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('teknisi.logout');

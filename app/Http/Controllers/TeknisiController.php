@@ -3,31 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Admin;
+use App\Models\Teknisi;
 use Illuminate\Support\Facades\Hash;
 
-class adminController extends Controller
+class TeknisiController extends Controller
 {
     // Show registration form
     public function index()
     {
-        return view('login.login_admin', [
-            'title' => 'Login Admin'
+        return view('login.login_teknisi', [
+            'title' => 'Login Teknisi'
         ]);
     }
 
-    public function dash_admin()
+    // Dashboard Teknisi
+    public function dash_teknisi()
     {
-        return view('admin.dash_admin', [
-            'title' => 'Dashboard Admin'
+        return view('teknisi.dash_teknisi', [
+            'title' => 'Dashboard Teknisi'
         ]);
     }
-    // Register new admin
+
+    // Register new teknisi
     public function store(Request $request)
     {
         // Validate input
         $validated = $request->validate([
-            'nik' => 'required|unique:admins,nik',
+            'nik' => 'required|unique:teknisis,nik',
             'nama' => 'required|string|max:255',
             'gender' => 'required|in:L,P',
             'no_telepon' => 'nullable|string|max:15',
@@ -37,19 +39,19 @@ class adminController extends Controller
         // Hash password
         $validated['password'] = Hash::make($validated['password']);
 
-        // Create new admin
-        Admin::create($validated);
+        // Create new teknisi
+        Teknisi::create($validated);
 
-        return redirect()->back()->with('success', 'Admin registered successfully.');
+        return redirect()->back()->with('success', 'Teknisi registered successfully.');
     }
 
     // Show login form
     public function showLoginForm()
     {
-        return view('login.login_admin');
+        return view('login.login_teknisi');
     }
 
-    // Login admin
+    // Login teknisi
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -57,16 +59,15 @@ class adminController extends Controller
             'password' => 'required|string',
         ]);
 
-        $admin = Admin::where('nik', $credentials['nik'])->first();
+        $teknisi = Teknisi::where('nik', $credentials['nik'])->first();
 
-        if ($admin && Hash::check($credentials['password'], $admin->password)) {
-            // Store admin data in session
-            $request->session()->put('admin', $admin);
+        if ($teknisi && Hash::check($credentials['password'], $teknisi->password)) {
+            // Store teknisi data in session
+            $request->session()->put('teknisi', $teknisi);
 
-            return redirect()->route('admin.dash_admin')->with('success', 'Login successful');
+            return redirect()->route('teknisi.dash_teknisi')->with('success', 'Login successful');
         }
 
         return back()->withErrors(['login' => 'Invalid NIK or Password.']);
     }
-
 }

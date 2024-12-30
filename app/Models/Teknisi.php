@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Teknisi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nik', 'nama', 'password', 'gender', 
-    'no_telepon'];
+    protected $fillable = ['nik', 'nama', 'password', 'gender', 'no_telepon'];
 
-    // If you want to use hashed passwords
+    // Jika Anda ingin menyembunyikan password saat mengambil data
     protected $hidden = ['password'];
 }

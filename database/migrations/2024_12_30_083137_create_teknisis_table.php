@@ -4,18 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+class CreateTeknisisTable extends Migration
+{
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('teknisis', function (Blueprint $table) {
             $table->id();
             $table->string('nik')->unique();
             $table->string('nama');
-            $table->enum('gender', ['L', 'P']); // Adding gender column with L and P options
-            $table->string('no_telepon')->nullable(); // Adding no_telepon column
+            $table->enum('gender', ['L', 'P']);
+            $table->string('no_telepon')->nullable();
             $table->string('password');
             $table->timestamps();
         });
@@ -23,9 +26,11 @@ return new class extends Migration {
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('teknisis');
     }
-};
+}

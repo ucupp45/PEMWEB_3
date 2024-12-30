@@ -2,8 +2,8 @@
 
 @section('container')
     <main class="form-signin text-center">
-        <h1 class="h3 fw-normal">Registrasi Admin</h1>
-        <form method="POST" action="/admin/store">
+        <h1 class="h3 fw-normal">Registrasi Teknisi</h1>
+        <form method="POST" action="/teknisi/store">
             @csrf
 
             <!-- NIK -->
@@ -43,7 +43,7 @@
             <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Registrasi</button>
         </form>
         <small class="d-block text-center mt-2">
-            Sudah punya akun? <a href="/admin">Login</a>
+            Sudah punya akun? <a href="/teknisi">Login</a>
         </small>
     </main>
 @endsection
