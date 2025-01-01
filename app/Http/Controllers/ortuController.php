@@ -68,4 +68,12 @@ class ortuController extends Controller
         return back()->withErrors(['login' => 'NIK atau Password salah.']);
     }
 
+    public function index_siswa()
+    {
+        // Mengambil semua data siswa dari database
+        $siswa = Siswa::all();
+
+        // Mengembalikan view dengan data siswa
+        return view('guru.dash_guru ', compact('siswa'));
+    }
 }

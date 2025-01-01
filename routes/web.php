@@ -5,6 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeknisiController;
+use App\Http\Controllers\siswaController;
 
 // Rute untuk login dan registrasi
 
@@ -64,3 +65,8 @@ Route::post('/teknisi/store', [TeknisiController::class, 'store']);
 Route::get('/login', [TeknisiController::class, 'showLoginForm'])->name('teknisi.login');
 Route::post('/login/teknisi', [TeknisiController::class, 'login'])->name('teknisi.login.submit');
 Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('teknisi.logout');
+
+// Menampilkan data siswa 
+Route::resource('siswa', siswaController::class,);
+
+

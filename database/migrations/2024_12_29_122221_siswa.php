@@ -15,7 +15,7 @@ class siswa extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id(); // Kolom ID otomatis
-            $table->string('nik')->unique(); // Kolom NIK (unik)
+            $table->unique('nik')(); // Kolom NIK (unik)
             $table->string('nama'); // Kolom nama
             $table->date('tanggal_lahir'); // Kolom tanggal lahir
             $table->enum('gender', ['L', 'P']); // Kolom gender (L = Laki-laki, P = Perempuan)
