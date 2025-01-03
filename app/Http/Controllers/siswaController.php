@@ -14,6 +14,7 @@ class siswaController extends Controller
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
         $katakunci = $request->katakunci;
         $jumlahbaris = 4;
         if (strlen($katakunci)){
@@ -21,9 +22,10 @@ class siswaController extends Controller
                 ->orWhere('nama','like','%katakunci') 
                 ->paginate($jumlahbaris);  
         } else {
+=======
+>>>>>>> 72c34541cb5d3db9048e67e39a2eed161613c9bf
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
-        }
-        return view('guru.dash_guru')->with('data_siswa',$data_siswa);
+        return view('guru.dash_guru', compact('data_siswa'));
     }
  
     /**
