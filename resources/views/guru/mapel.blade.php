@@ -7,8 +7,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h1, h2 {
+            color: #343a40;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        table th, table td {
+            text-align: center;
+        }
+
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <div class="container mt-5">
-        <h1 class="mb-4">Mata Pelajaran</h1>
+        <h1 class="mb-4 text-center">Mata Pelajaran</h1>
 
         <!-- Form untuk menambah mata pelajaran -->
         {{-- <form id="mataPelajaranForm" action="{{ route('mata_pelajaran.create') }}" method="POST"> --}}
@@ -21,7 +58,9 @@
                 <label for="deskripsi" class="form-label">Deskripsi</label>
                 <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control"></textarea>
             </div>
+            <div class="d-flex justify-content-end mb-4">
             <button type="submit" class="btn btn-primary">Tambah Mata Pelajaran</button>
+            </div>
         </form>
 
         <hr>
