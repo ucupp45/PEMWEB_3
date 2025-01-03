@@ -14,16 +14,8 @@ class siswaController extends Controller
      */
     public function index(Request $request)
     {
-        $katakunci = $request->katakunci;
-        $jumlahbaris = 4;
-        if (strlen($katakunci)){
-            $data_siswa = Siswa::where('nik','like','%katakunci%')
-                ->orWhere('nama','like','%katakunci')
-                ->paginate($jumlahbaris);  
-        } else {
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
-        }
-        return view('guru.dash_guru')->with('data_siswa',$data_siswa);
+        return view('guru.dash_guru', compact('data_siswa'));
     }
  
     /**
