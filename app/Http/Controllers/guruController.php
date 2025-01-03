@@ -14,6 +14,9 @@ class GuruController extends Controller
         return view('login.login_guru', [
             'title' => 'Login Guru'
         ]);
+
+        // Ambil semua data mata pelajaran
+
     }
 
     #menampilkan data siswa
@@ -76,4 +79,7 @@ class GuruController extends Controller
         // If login fails
         return back()->withErrors(['login' => 'NUPTK atau Password salah.']);
     }
+
+
+
 }

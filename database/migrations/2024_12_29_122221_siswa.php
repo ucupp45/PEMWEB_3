@@ -14,7 +14,7 @@ class siswa extends Migration
     public function up()
     {
         Schema::create('siswa', function (Blueprint $table) {
-            $table->id(); // Kolom ID otomatis
+            $table->id (); // Kolom ID otomatis
             $table->string('nik')->unique(); // Kolom NIK (unik)
             $table->string('nama'); // Kolom nama
             $table->date('tanggal_lahir'); // Kolom tanggal lahir
