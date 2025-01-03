@@ -114,12 +114,12 @@
                                 </div>
                             </div>
 
-                             <div class="card-body">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>NIK</th>
+                                                <th>ID</th>
                                                 <th>Nama</th>
                                                 <th>Gender</th>
                                                 <th>Nama Orang Tua</th>
