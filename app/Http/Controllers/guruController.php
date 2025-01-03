@@ -18,12 +18,13 @@ class GuruController extends Controller
 
     public function dash_guru()
     {
-        $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
+        $data_siswa = Siswa::orderBy('id', 'desc')->paginate(5);
         return view('guru.dash_guru', compact('data_siswa'));
 
         return view('guru.dash_guru', compact([
-            'title' => 'Dashboard Guru'
-        , 'data_siswa']));
+            'title' => 'Dashboard Guru',
+            'data_siswa'
+        ]));
     }
     public function store(Request $request)
     {
