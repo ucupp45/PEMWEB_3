@@ -18,7 +18,7 @@ class siswaController extends Controller
         $jumlahbaris = 4;
         if (strlen($katakunci)){
             $data_siswa = Siswa::where('nik','like','%katakunci%')
-                ->orWhere('nama','like','%katakunci')
+                ->orWhere('nama','like','%katakunci') 
                 ->paginate($jumlahbaris);  
         } else {
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);

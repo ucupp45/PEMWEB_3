@@ -5,7 +5,8 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeknisiController;
-use App\Http\Controllers\siswaController;
+// use App\Http\Controllers\siswaController;
+use App\Http\Controllers\MapelController;
 
 // Rute untuk login dan registrasi
 
@@ -67,6 +68,7 @@ Route::post('/login/teknisi', [TeknisiController::class, 'login'])->name('teknis
 Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('teknisi.logout');
 
 // Menampilkan data siswa 
-Route::resource('siswa', siswaController::class,);
+// Route::resource('siswa', siswaController::class,);
 
-
+// Menampilkan mata pelajaran
+Route::resource('mapel', MapelController::class,);
