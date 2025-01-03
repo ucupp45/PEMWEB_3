@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Hash;
 
 class ortuController extends Controller
 {
+
+    public function showAdminDashboard()
+    {
+        // Ambil semua data siswa
+        $siswas = Siswa::all();
+
+        // Kirim data ke view 'admin.dash_admin'
+        return view('admin.dash_admin', compact('siswas'));
+    }
     public function index()
     {
         return view('login.login_ortu', [

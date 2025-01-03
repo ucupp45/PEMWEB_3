@@ -15,6 +15,14 @@ class GuruController extends Controller
         ]);
     }
 
+    public function showAdminDashboard()
+    {
+        // Ambil semua data guru
+        $gurus = Guru::all();
+        dd($gurus);
+        // Kirim data ke view 'admin.dash_admin'
+        return view('admin.dash_admin', compact('gurus'));
+    }
     public function dash_guru()
     {
         return view('guru.dash_guru', [

@@ -48,6 +48,7 @@ Route::post('/guru/store', [GuruController::class, 'store']);
 Route::get('/login', [GuruController::class, 'showLoginForm'])->name('guru.login');
 Route::post('/login/guru', [GuruController::class, 'login'])->name('guru.login.submit');
 Route::post('/logout/guru', [GuruController::class, 'logout'])->name('guru.logout'); // Logout siswa
+Route::get('/dash_admin', [GuruController::class, 'showAdminDashboard'])->name('admin.dash_admin');
 
 Route::get('/admin', [adminController::class, 'index']);
 Route::get('/dash_admin', [adminController::class, 'dash_admin'])->name('admin.dash_admin'); // Rute dashboard admin
@@ -64,3 +65,5 @@ Route::post('/teknisi/store', [TeknisiController::class, 'store']);
 Route::get('/login', [TeknisiController::class, 'showLoginForm'])->name('teknisi.login');
 Route::post('/login/teknisi', [TeknisiController::class, 'login'])->name('teknisi.login.submit');
 Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('teknisi.logout');
+
+

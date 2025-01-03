@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Guru;
 use Illuminate\Support\Facades\Hash;
 
 class adminController extends Controller
@@ -14,6 +15,14 @@ class adminController extends Controller
         return view('login.login_admin', [
             'title' => 'Login Admin'
         ]);
+    }
+    public function showAdminDashboard()
+    {
+        // Ambil semua data guru
+        $gurus = Guru::all();
+        dd($gurus);
+        // Kirim data ke view 'admin.dash_admin'
+        return view('admin.dash_admin', compact('gurus'));
     }
 
     public function dash_admin()
