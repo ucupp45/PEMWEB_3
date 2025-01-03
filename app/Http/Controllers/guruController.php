@@ -16,6 +16,7 @@ class GuruController extends Controller
         ]);
     }
 
+    #menampilkan data siswa
     public function dash_guru()
     {
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
@@ -25,6 +26,7 @@ class GuruController extends Controller
             'title' => 'Dashboard Guru'
         , 'data_siswa']));
     }
+
     public function store(Request $request)
     {
         // Validasi input
