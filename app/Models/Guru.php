@@ -21,11 +21,10 @@ class Guru extends Model
     ];
 
     // Relasi dengan MataPelajaran
-    public function mataPelajaran()
+    public function pelajaran()
     {
-        return $this->hasMany(MataPelajaran::class);
+        return $this->hasMany(Pelajaran::class);
     }
-
     // Relasi dengan Jadwal
     public function jadwals()
     {

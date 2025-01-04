@@ -213,7 +213,7 @@
             <div class="sidebar-content">
                 <ul>
                     <li class="active">
-                        <a href="index.html" class="link">
+                        <a href="#" class="link">
                             <i class="ti-home"></i>
                             <span>Dashboard</span>
                         </a>
@@ -224,7 +224,7 @@
                             <span>Siswa</span>
                         </a>
                         <ul class="sub-menu ">
-                            <li><a href="element-ui.html" class="link"><span>Daftar Siswa</span></a></li>
+                            <li><a href="#daftarsiswa" class="link"><span>Daftar Siswa</span></a></li>
                             <li><a href="element-accordion.html" class="link"><span>Nilai</span></a></li>
                             <li><a href="element-tabs-collapse.html" class="link"><span>Kesehatan</span></a></li>
                             <li><a href="element-card.html" class="link"><span>Konsultasi</span></a></li>
@@ -236,7 +236,7 @@
                             <span>Guru</span>
                         </a>
                         <ul class="sub-menu ">
-                            <li><a href="form-element.html" class="link">
+                            <li><a href="#daftarguru" class="link">
                                     <span>Daftar Guru</span></a>
                             </li>
                         </ul>
@@ -254,13 +254,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="main-menu has-dropdown">
+                        <a href="#n" class="main-menu has-dropdown">
                             <i class="ti-write"></i>
                             <span>Admin</span>
                         </a>
                         <ul class="sub-menu ">
-                            <li><a href="table-basic.html" class="link"><span>Daftar Admin</span></a></li>
-                            <li><a href="table-datatables.html" class="link"><span>Daftar Teknisi</span></a></li>
+                            <li><a href="#daftaradmin" class="link"><span>Daftar Admin</span></a></li>
+                            <li><a href="#daftarteknisi" class="link"><span>Daftar Teknisi</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -276,7 +276,7 @@
                 <div class="row same-height">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header ">
+                            <div class="card-header " id="daftarsiswa">
                                 <h4>Daftar Siswa</h4>
                                 <!-- Tombol untuk membuka modal tambah siswa -->
                             </div>
@@ -462,6 +462,7 @@
                     </div>
                 </div>
 
+
                 <!-- Include jQuery and Bootstrap JS for Modal functionality -->
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -486,7 +487,6 @@
                         });
                     }
                     // Fungsi untuk membuka modal edit guru dan mengisi data yang dipilih
-                   
                 </script>
 
 
@@ -496,9 +496,9 @@
                 <div class="row same-height">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" id="daftarguru">
                                 <h4>Daftar Guru</h4>
-                               
+
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -538,9 +538,9 @@
                                     </table>
                                     {{ $data_guru->withQueryString()->links() }}
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#addGuruModal">
-                                    Tambah Guru
-                                </button>
+                                        data-bs-target="#addGuruModal">
+                                        Tambah Guru
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -682,13 +682,14 @@
                         });
                     }
                 </script>
-                
 
 
+
+                <!-- Admin Table -->
                 <div class="row same-height">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" id="daftaradmin">
                                 <h4>Daftar Admin</h4>
                             </div>
                             <div class="card-body">
@@ -696,33 +697,164 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
+                                                <th>#</th>
                                                 <th>NIK</th>
                                                 <th>Nama</th>
                                                 <th>Gender</th>
-                                                <th>No. Telepon</th>
+                                                <th>No. Tlp</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($data_admin as $admin)
                                                 <tr>
+                                                    <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $admin->nik }}</td>
                                                     <td>{{ $admin->nama }}</td>
-                                                    <td>{{ $admin->gender }}</td>
-                                                    <td>{{ $admin->no_telepon }}</td>
+                                                    <td>{{ $admin->gender == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
+                                                    <td>{{ $admin->no_telepon ?? 'N/A' }}</td>
+                                                    <td>
+                                                        <!-- Edit Button -->
+                                                        <button class="btn btn-info btn-sm"
+                                                            onclick="editAdmin({{ $admin->id }})"
+                                                            data-bs-toggle="modal" data-bs-target="#editAdminModal">
+                                                            Edit
+                                                        </button>
+
+                                                        <!-- Delete Button -->
+                                                        <form action="{{ route('admin.destroyAdmin', $admin->id) }}"
+                                                            method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Are you sure you want to delete this admin?')">
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
+
+                                    <!-- Pagination -->
                                     {{ $data_admin->links() }}
+                                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addAdminModal">
+                                        Tambah Admin
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Modal for Add Admin -->
+                <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addAdminModalLabel">Tambah Admin</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('admin.storeAdmin') }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="nik" name="nik" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="no_telepon" class="form-label">Nomor Telepon</label>
+                                        <input type="text" class="form-control" id="no_telepon" name="no_telepon">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal for Edit Admin -->
+                <div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="editAdminModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editAdminModalLabel">Edit Admin</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form id="editAdminForm" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="edit_nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="edit_nik" name="nik" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="edit_nama" name="nama" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="edit_gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_no_telepon" class="form-label">Nomor Telepon</label>
+                                        <input type="text" class="form-control" id="edit_no_telepon" name="no_telepon">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    // Edit Admin - populate the modal with the admin details
+                    function editAdmin(id) {
+                        $.ajax({
+                            url: '/dash_admin/admin/' + id + '/edit',
+                            method: 'GET',
+                            success: function(response) {
+                                $('#editAdminModal').modal('show');
+                                $('#editAdminForm').attr('action', '/dash_admin/admin/' + id);
+                                $('#edit_nik').val(response.nik);
+                                $('#edit_nama').val(response.nama);
+                                $('#edit_gender').val(response.gender);
+                                $('#edit_no_telepon').val(response.no_telepon);
+                            }
+                        });
+                    }
+                </script>
+
+
                 <div class="row same-height">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" id="daftarteknisi">
                                 <h4>Daftar Teknisi</h4>
                             </div>
                             <div class="card-body">
@@ -730,30 +862,147 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
+                                                <th>#</th>
                                                 <th>NIK</th>
                                                 <th>Nama</th>
                                                 <th>Gender</th>
                                                 <th>No. Telepon</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($data_teknisi as $teknisi)
+                                            @foreach($data_teknisi as $teknisi)
                                                 <tr>
+                                                    <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $teknisi->nik }}</td>
                                                     <td>{{ $teknisi->nama }}</td>
-                                                    <td>{{ $teknisi->gender }}</td>
-                                                    <td>{{ $teknisi->no_telepon }}</td>
+                                                    <td>{{ $teknisi->gender == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
+                                                    <td>{{ $teknisi->no_telepon ?? 'N/A' }}</td>
+                                                    <td>
+                                                        <button class="btn btn-info btn-sm" onclick="editTeknisi({{ $teknisi->id }})" data-bs-toggle="modal" data-bs-target="#editTeknisiModal">
+                                                            Edit
+                                                        </button>
+                                                        <form action="{{ route('admin.destroyTeknisi', $teknisi->id) }}" method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                                                                Hapus
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     {{ $data_teknisi->links() }}
+                                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addTeknisiModal">
+                                        Tambah Teknisi
+                                    </button>
+                                
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="addTeknisiModal" tabindex="-1" aria-labelledby="addTeknisiModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="{{ route('admin.storeTeknisi') }}" method="POST">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addTeknisiModalLabel">Tambah Teknisi</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nik" class="form-label">NIK</label>
+                                    <input type="text" class="form-control" id="nik" name="nik" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="nama" name="nama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="L">Laki-laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="no_telepon" class="form-label">No. Telepon</label>
+                                    <input type="text" class="form-control" id="no_telepon" name="no_telepon">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="editTeknisiModal" tabindex="-1" aria-labelledby="editTeknisiModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form id="editTeknisiForm" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editTeknisiModalLabel">Edit Teknisi</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="edit_nik" class="form-label">NIK</label>
+                                    <input type="text" class="form-control" id="edit_nik" name="nik" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit_nama" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="edit_nama" name="nama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit_gender" class="form-label">Gender</label>
+                                    <select class="form-control" id="edit_gender" name="gender" required>
+                                        <option value="L">Laki-laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit_no_telepon" class="form-label">No. Telepon</label>
+                                    <input type="text" class="form-control" id="edit_no_telepon" name="no_telepon">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                function editTeknisi(id) {
+                    $.ajax({
+                        url: '/dash_admin/teknisi/' + id + '/edit',
+                        method: 'GET',
+                        success: function(response) {
+                            $('#editTeknisiModal').modal('show');
+                            $('#editTeknisiForm').attr('action', '/dash_admin/teknisi/' + id);
+                            $('#edit_nik').val(response.nik);
+                            $('#edit_nama').val(response.nama);
+                            $('#edit_gender').val(response.gender);
+                            $('#edit_no_telepon').val(response.no_telepon);
+                        }
+                    });
+                }
+            </script>
 
 
             <div class="settings">
