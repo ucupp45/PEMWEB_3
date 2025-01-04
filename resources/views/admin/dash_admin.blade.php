@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../vendor/perfect-scrollbar/css/perfect-scrollbar.css">
 
     <!-- CSS for this page only -->
-<link rel="stylesheet" href="../vendor/chart.js/dist/Chart.min.css">
+    <link rel="stylesheet" href="../vendor/chart.js/dist/Chart.min.css">
     <!-- End CSS  -->
 
     <link rel="stylesheet" href="../assets/css/style.min.css">
@@ -44,7 +44,8 @@
                             <li class="menu-content ps-menu">
                                 <a href="#">
                                     <div class="message-image">
-                                        <img src="../assets/images/avatar1.png" class="rounded-circle w-100" alt="user1">
+                                        <img src="../assets/images/avatar1.png" class="rounded-circle w-100"
+                                            alt="user1">
                                     </div>
                                     <div class="message-content read">
                                         <div class="subject">
@@ -58,7 +59,8 @@
                                 </a>
                                 <a href="#">
                                     <div class="message-image">
-                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100" alt="user1">
+                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100"
+                                            alt="user1">
                                     </div>
                                     <div class="message-content">
                                         <div class="subject">
@@ -72,7 +74,8 @@
                                 </a>
                                 <a href="#">
                                     <div class="message-image">
-                                        <img src="../assets/images/avatar1.png" class="rounded-circle w-100" alt="user1">
+                                        <img src="../assets/images/avatar1.png" class="rounded-circle w-100"
+                                            alt="user1">
                                     </div>
                                     <div class="message-content read">
                                         <div class="subject">
@@ -86,7 +89,8 @@
                                 </a>
                                 <a href="#">
                                     <div class="message-image">
-                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100" alt="user1">
+                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100"
+                                            alt="user1">
                                     </div>
                                     <div class="message-content">
                                         <div class="subject">
@@ -100,7 +104,8 @@
                                 </a>
                                 <a href="#">
                                     <div class="message-image">
-                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100" alt="user1">
+                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100"
+                                            alt="user1">
                                     </div>
                                     <div class="message-content">
                                         <div class="subject">
@@ -215,7 +220,7 @@
                     </li>
                     <li>
                         <a href="#" class="main-menu has-dropdown">
-                            <i class="ti-user"></i>  
+                            <i class="ti-user"></i>
                             <span>Siswa</span>
                         </a>
                         <ul class="sub-menu ">
@@ -243,7 +248,8 @@
                         </a>
                         <ul class="sub-menu">
                             <li><a href="error-404.html" target="_blank" class="link"><span>Jadwal</span></a></li>
-                            <li><a href="error-403.html" target="_blank" class="link"><span>Mata Pelajaran</span></a></li>
+                            <li><a href="error-403.html" target="_blank" class="link"><span>Mata
+                                        Pelajaran</span></a></li>
                             <li><a href="error-500.html" target="_blank" class="link"><span>Ruangan</span></a></li>
                         </ul>
                     </li>
@@ -259,561 +265,573 @@
                     </li>
                 </ul>
             </div>
-        </nav>        
-<div class="main-content">
-    <div class="title">
-        Admin
-    </div>
-    <div class="content-wrapper">
-        <div class="row same-height">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Daftar Siswa</h4>
-                    </div>
-                    <div class="card-body">
-                        {{-- <canvas id="myChart" height="642" width="1388"></canvas> --}}
-                    </div>
-                </div>
+        </nav>
+        <div class="main-content">
+            <div class="title">
+                Admin
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Kesehatan</h4>
-                    </div>
-                    <div class="card-body">
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="row same-height">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Nilai</h4>
-                    </div>
-                    <div class="card-body">
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Mata Pelajaran</h4>
-                    </div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="row same-height">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Konsultasi</h4>
-                    </div>
-                    <div class="card-body">
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Jadwal</h4>
-                    </div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="row same-height">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Daftar Guru</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="container mt-5">
-                            <h1 class="text-center mb-4">Daftar Guru</h1>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>NUPTK</th>
-                                            <th>Nama</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>Gender</th>
-                                            <th>Nomor Telepon</th>
-                                            <th>Alamat</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($gurus as $guru)
+            <div class="content-wrapper">
+
+                {{-- DAFTAR SISWA --}}
+                <div class="row same-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header ">
+                                <h4>Daftar Siswa</h4>
+                                <!-- Tombol untuk membuka modal tambah siswa -->
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $guru->nuptk }}</td>
-                                                <td>{{ $guru->nama }}</td>
-                                                <td>{{ $guru->tanggal_lahir }}</td>
-                                                <td>{{ $guru->gender }}</td>
-                                                <td>{{ $guru->nomor_telepon }}</td>
-                                                <td>{{ $guru->alamat }}</td>
-                                                <td>
-                                                    <a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                    <form action="{{ route('guru.destroy', $guru->id) }}" method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</button>
-                                                    </form>
-                                                </td>
+                                                <th>NIK</th>
+                                                <th>Nama</th>
+                                                <th>Gender</th>
+                                                <th>Nama Orang Tua</th>
+                                                <th>No. Tlp</th>
+                                                <th>Tanggal Lahir</th>
+                                                <th>Alamat</th>
+                                                <th>Actions</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($data_siswa as $item)
+                                                <tr>
+                                                    <td>{{ $item->nik }}</td>
+                                                    <td>{{ $item->nama }}</td>
+                                                    <td>{{ $item->gender }}</td>
+                                                    <td>{{ $item->nama_orang_tua }}</td>
+                                                    <td>{{ $item->nomor_telepon }}</td>
+                                                    <td>{{ $item->tanggal_lahir }}</td>
+                                                    <td>{{ $item->alamat }}</td>
+                                                    <td>
+                                                        <!-- Edit Button -->
+                                                        <button class="btn btn-info btn-sm"
+                                                            onclick="editSiswa({{ $item->id }})">Edit</button>
+
+                                                        <!-- Delete Button -->
+                                                        <form action="{{ route('admin.destroySiswa', $item->id) }}"
+                                                            method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm m-1"
+                                                                onclick="return confirm('Are you sure you want to delete this data?')">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    {{ $data_siswa->withQueryString()->links() }}
+                                    <button type="button" class="btn btn-success " data-bs-toggle="modal"
+                                        data-bs-target="#addSiswaModal">
+                                        Tambah Siswa
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    
+                    </div>
+                </div>
+
+                <!-- Modal for Add Siswa -->
+                <div class="modal fade" id="addSiswaModal" tabindex="-1" aria-labelledby="addSiswaModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addSiswaModalLabel">Tambah Siswa</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('admin.storeSiswa') }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="nik" name="nik"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama_orang_tua" class="form-label">Nama Orang Tua</label>
+                                        <input type="text" class="form-control" id="nama_orang_tua"
+                                            name="nama_orang_tua" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
+                                        <input type="text" class="form-control" id="nomor_telepon"
+                                            name="nomor_telepon" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                        <input type="date" class="form-control" id="tanggal_lahir"
+                                            name="tanggal_lahir" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for Edit Siswa -->
+                <div class="modal fade" id="editSiswaModal" tabindex="-1" aria-labelledby="editSiswaModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editSiswaModalLabel">Edit Siswa</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form id="editSiswaForm" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="edit_nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="edit_nik" name="nik"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="edit_nama" name="nama"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="edit_gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_nama_orang_tua" class="form-label">Nama Orang Tua</label>
+                                        <input type="text" class="form-control" id="edit_nama_orang_tua"
+                                            name="nama_orang_tua" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_nomor_telepon" class="form-label">Nomor Telepon</label>
+                                        <input type="text" class="form-control" id="edit_nomor_telepon"
+                                            name="nomor_telepon" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                        <input type="date" class="form-control" id="edit_tanggal_lahir"
+                                            name="tanggal_lahir" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_alamat" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="edit_alamat" name="alamat"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Include jQuery and Bootstrap JS for Modal functionality -->
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+                <script>
+                    // Handle Edit Modal
+                    function editSiswa(id) {
+                        $.ajax({
+                            url: '/siswa/' + id + '/edit',
+                            method: 'GET',
+                            success: function(response) {
+                                $('#editSiswaModal').modal('show');
+                                $('#editSiswaForm').attr('action', '/dash_admin/siswa/' + id);
+                                $('#edit_nik').val(response.nik);
+                                $('#edit_nama').val(response.nama);
+                                $('#edit_gender').val(response.gender);
+                                $('#edit_nama_orang_tua').val(response.nama_orang_tua);
+                                $('#edit_nomor_telepon').val(response.nomor_telepon);
+                                $('#edit_tanggal_lahir').val(response.tanggal_lahir);
+                                $('#edit_alamat').val(response.alamat);
+                            }
+                        });
+                    }
+                    // Fungsi untuk membuka modal edit guru dan mengisi data yang dipilih
+                   
+                </script>
+
+
+
+
+                {{-- DAFTAR GURU --}}
+                <div class="row same-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Daftar Guru</h4>
+                               
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>NUPTK</th>
+                                                <th>Nama</th>
+                                                <th>Gender</th>
+                                                <th>Nomor Telepon</th>
+                                                <th>Alamat</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($data_guru as $item)
+                                                <tr>
+                                                    <td>{{ $item->nuptk }}</td>
+                                                    <td>{{ $item->nama }}</td>
+                                                    <td>{{ $item->gender }}</td>
+                                                    <td>{{ $item->nomor_telepon }}</td>
+                                                    <td>{{ $item->alamat }}</td>
+                                                    <td>
+                                                        <button class="btn btn-info btn-sm"
+                                                            onclick="editGuru({{ $item->id }})">Edit</button>
+                                                        <form action="{{ route('admin.destroyGuru', $item->id) }}"
+                                                            method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm  m-1"
+                                                                onclick="return confirm('Are you sure you want to delete this data?')">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    {{ $data_guru->withQueryString()->links() }}
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#addGuruModal">
+                                    Tambah Guru
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal for Add Guru -->
+                <div class="modal fade" id="addGuruModal" tabindex="-1" aria-labelledby="addGuruModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addGuruModalLabel">Tambah Guru</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('admin.storeGuru') }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="nuptk" class="form-label">NUPTK</label>
+                                        <input type="text" class="form-control" id="nuptk" name="nuptk"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                        <input type="date" class="form-control" id="tanggal_lahir"
+                                            name="tanggal_lahir" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
+                                        <input type="text" class="form-control" id="nomor_telepon"
+                                            name="nomor_telepon" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for Edit Guru -->
+                <div class="modal fade" id="editGuruModal" tabindex="-1" aria-labelledby="editGuruModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editGuruModalLabel">Edit Guru</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form id="editGuruForm" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="edit_nuptk" class="form-label">NUPTK</label>
+                                        <input type="text" class="form-control" id="edit_nuptk" name="nuptk"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="edit_nama" name="nama"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                        <input type="date" class="form-control" id="edit_tanggal_lahir"
+                                            name="tanggal_lahir" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="edit_gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_nomor_telepon" class="form-label">Nomor Telepon</label>
+                                        <input type="text" class="form-control" id="edit_nomor_telepon"
+                                            name="nomor_telepon" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_alamat" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="edit_alamat" name="alamat"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    // Handle Edit Modal
+                    function editGuru(id) {
+                        $.ajax({
+                            url: '/dash_admin/guru/' + id + '/edit',
+                            method: 'GET',
+                            success: function(response) {
+                                $('#editGuruModal').modal('show');
+                                $('#editGuruForm').attr('action', '/dash_admin/guru/' + id);
+                                $('#edit_nuptk').val(response.nuptk);
+                                $('#edit_nama').val(response.nama);
+                                $('#edit_tanggal_lahir').val(response.tanggal_lahir);
+                                $('#edit_gender').val(response.gender);
+                                $('#edit_nomor_telepon').val(response.nomor_telepon);
+                                $('#edit_alamat').val(response.alamat);
+                            }
+                        });
+                    }
+                </script>
+                
+
+
+                <div class="row same-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Daftar Admin</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>NIK</th>
+                                                <th>Nama</th>
+                                                <th>Gender</th>
+                                                <th>No. Telepon</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($data_admin as $admin)
+                                                <tr>
+                                                    <td>{{ $admin->nik }}</td>
+                                                    <td>{{ $admin->nama }}</td>
+                                                    <td>{{ $admin->gender }}</td>
+                                                    <td>{{ $admin->no_telepon }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    {{ $data_admin->links() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row same-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Daftar Teknisi</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>NIK</th>
+                                                <th>Nama</th>
+                                                <th>Gender</th>
+                                                <th>No. Telepon</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($data_teknisi as $teknisi)
+                                                <tr>
+                                                    <td>{{ $teknisi->nik }}</td>
+                                                    <td>{{ $teknisi->nama }}</td>
+                                                    <td>{{ $teknisi->gender }}</td>
+                                                    <td>{{ $teknisi->no_telepon }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    {{ $data_teknisi->links() }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Ruangan</h4>
-                    </div>
-                    <div class="card-body">
+
+
+            <div class="settings">
+                <div class="settings-icon-wrapper">
+                    <div class="settings-icon">
+                        <i class="ti ti-settings"></i>
                     </div>
                 </div>
+                <div class="settings-content">
+                    <ul>
+                        <li class="fix-header">
+                            <div class="fix-header-wrapper">
+                                <div class="form-check form-switch lg">
+                                    <label class="form-check-label" for="settingsFixHeader">Fixed Header</label>
+                                    <input class="form-check-input toggle-settings" name="Header" type="checkbox"
+                                        id="settingsFixHeader">
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="fix-footer">
+                            <div class="fix-footer-wrapper">
+                                <div class="form-check form-switch lg">
+                                    <label class="form-check-label" for="settingsFixFooter">Fixed Footer</label>
+                                    <input class="form-check-input toggle-settings" name="Footer" type="checkbox"
+                                        id="settingsFixFooter">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="theme-switch">
+                                <label for="">Theme Color</label>
+                                <div>
+                                    <div class="form-check form-check-inline lg">
+                                        <input class="form-check-input lg theme-color" type="radio"
+                                            name="ThemeColor" id="light" value="light">
+                                        <label class="form-check-label" for="light">Light</label>
+                                    </div>
+                                    <div class="form-check form-check-inline lg">
+                                        <input class="form-check-input lg theme-color" type="radio"
+                                            name="ThemeColor" id="dark" value="dark">
+                                        <label class="form-check-label" for="dark">Dark</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="fix-footer-wrapper">
+                                <div class="form-check form-switch lg">
+                                    <label class="form-check-label" for="settingsFixFooter">Collapse Sidebar</label>
+                                    <input class="form-check-input toggle-settings" name="Sidebar" type="checkbox"
+                                        id="settingsFixFooter">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <footer>
+                SIMPA 2025
+            </footer>
+            <div class="overlay action-toggle">
             </div>
         </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="row same-height">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Daftar Teknisi</h4>
-                    </div>
-                    <div class="card-body">
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Daftar Admin</h4>
-                    </div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- <div class="content-wrapper">
-        <div class="row same-height">
-            <div class="col-md-4">
-                <div class="card">
-                    <!-- <div class="float-label">
-                        <h6>Sales</h6>
-                        <h4>$1500</h4>
-                    </div> -->
-                    <div class="card-body">
-                        <div id="apex-chart"></div>
-                    </div>
-                </div>
-                <br>
-                <div class="card">
-                    <!-- <div class="float-label">
-                        <h6>Profit</h6>
-                        <h4>$500</h4>
-                    </div> -->
-                    <span></span>
+        <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="../vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 
-                    <div class="card-body">
-                        <div id="apex-chart-bar"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Activities</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="timeline-xs">
-                            <li class="timeline-item success">
-                                <div class="margin-left-15">
-                                    <div class="text-muted text-small">
-                                        2 minutes ago
-                                    </div>
-                                    <p>
-                                        <a class="text-info" href="">
-                                            Bambang
-                                        </a>
-                                        has completed his account.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="timeline-item">
-                                <div class="margin-left-15">
-                                    <div class="text-muted text-small">
-                                        12:30
-                                    </div>
-                                    <p>
-                                        Staff Meeting
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="timeline-item danger">
-                                <div class="margin-left-15">
-                                    <div class="text-muted text-small">
-                                        11:11
-                                    </div>
-                                    <p>
-                                        Completed new layout.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="timeline-item info">
-                                <div class="margin-left-15">
-                                    <div class="text-muted text-small">
-                                        Thu, 12 Jun
-                                    </div>
-                                    <p>
-                                        Contacted
-                                        <a class="text-info" href="">
-                                            Microsoft
-                                        </a>
-                                        for license upgrades.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="timeline-item">
-                                <div class="margin-left-15">
-                                    <div class="text-muted text-small">
-                                        Tue, 10 Jun
-                                    </div>
-                                    <p>
-                                        Started development new site
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="timeline-item">
-                                <div class="margin-left-15">
-                                    <div class="text-muted text-small">
-                                        Sun, 11 Apr
-                                    </div>
-                                    <p>
-                                        Lunch with
-                                        <a class="text-info" href="">
-                                            Mba Inem
-                                        </a>
-                                        .
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="timeline-item warning">
-                                <div class="margin-left-15">
-                                    <div class="text-muted text-small">
-                                        Wed, 25 Mar
-                                    </div>
-                                    <p>
-                                        server Maintenance.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Chat</h4>
-                    </div>
-                    <div class="card-body small-padding">
-                        <div class="panel-discussion ps-chat">
-                            <ol class="discussion">
-                                <li class="messages-date">
-                                    Sunday, Feb 9, 12:58
-                                </li>
-                                <li class="self">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mas Bambang
-                                        </div>
-                                        <div class="message-text">
-                                            Hi, Mba Inem
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mba Inem
-                                        </div>
-                                        <div class="message-text">
-                                            How are you?
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="other">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mba Inem
-                                        </div>
-                                        <div class="message-text">
-                                            Hi, i am good
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar2.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="self">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mas Bambang
-                                        </div>
-                                        <div class="message-text">
-                                            Glad to see you ;)
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="messages-date">
-                                    Sunday, Feb 9, 13:10
-                                </li>
-                                <li class="other">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mba Inem
-                                        </div>
-                                        <div class="message-text">
-                                            What do you think about my new Dashboard?
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar2.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="messages-date">
-                                    Sunday, Feb 9, 15:28
-                                </li>
-                                <li class="other">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mba Inem
-                                        </div>
-                                        <div class="message-text">
-                                            Alo...
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar2.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mba Inem
-                                        </div>
-                                        <div class="message-text">
-                                            Are you there?
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar2.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="self">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mas Bambang
-                                        </div>
-                                        <div class="message-text">
-                                            Hi, i am here
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mba Inem
-                                        </div>
-                                        <div class="message-text">
-                                            Your Dashboard is great
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="messages-date">
-                                    Friday, Feb 7, 23:39
-                                </li>
-                                <li class="other">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mba Inem
-                                        </div>
-                                        <div class="message-text">
-                                            How does the binding and digesting work in ReactJS?, Bang?
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar2.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="self">
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mas Bambang
-                                        </div>
-                                        <div class="message-text">
-                                            oh that's your question?
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mas Bambang
-                                        </div>
-                                        <div class="message-text">
-                                            little reduntant, no?
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="message">
-                                        <div class="message-name">
-                                            Mas Bambang
-                                        </div>
-                                        <div class="message-text">
-                                            literally we get the question daily
-                                        </div>
-                                        <div class="message-avatar">
-                                            <img src="../assets/images/avatar1.png" alt="">
-                                        </div>
-                                    </div>
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="message-bar">
-                            <div class="message-inner">
-                                <a class="link icon-only" href="#"><i class="fa fa-camera"></i></a>
-                                <div class="message-area">
-                                    <textarea placeholder="Message"></textarea>
-                                </div>
-                                <a class="link" href="#">
-                                    Send
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-</div>
-
-        <div class="settings">
-            <div class="settings-icon-wrapper">
-                <div class="settings-icon">
-                    <i class="ti ti-settings"></i>
-                </div>
-            </div>
-            <div class="settings-content">
-                <ul>
-                    <li class="fix-header">
-                        <div class="fix-header-wrapper">
-                            <div class="form-check form-switch lg">
-                                <label class="form-check-label" for="settingsFixHeader">Fixed Header</label>
-                                <input class="form-check-input toggle-settings" name="Header" type="checkbox"
-                                    id="settingsFixHeader">
-                            </div>
-
-                        </div>
-                    </li>
-                    <li class="fix-footer">
-                        <div class="fix-footer-wrapper">
-                            <div class="form-check form-switch lg">
-                                <label class="form-check-label" for="settingsFixFooter">Fixed Footer</label>
-                                <input class="form-check-input toggle-settings" name="Footer" type="checkbox"
-                                    id="settingsFixFooter">
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="theme-switch">
-                            <label for="">Theme Color</label>
-                            <div>
-                                <div class="form-check form-check-inline lg">
-                                    <input class="form-check-input lg theme-color" type="radio" name="ThemeColor" id="light"
-                                        value="light">
-                                    <label class="form-check-label" for="light">Light</label>
-                                </div>
-                                <div class="form-check form-check-inline lg">
-                                    <input class="form-check-input lg theme-color" type="radio" name="ThemeColor" id="dark"
-                                        value="dark">
-                                    <label class="form-check-label" for="dark">Dark</label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="fix-footer-wrapper">
-                            <div class="form-check form-switch lg">
-                                <label class="form-check-label" for="settingsFixFooter">Collapse Sidebar</label>
-                                <input class="form-check-input toggle-settings" name="Sidebar" type="checkbox"
-                                    id="settingsFixFooter">
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div> 
-
-        <footer>
-            SIMPA 2025
-        </footer>
-        <div class="overlay action-toggle">
-        </div>
-    </div>
-    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="../vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
-
-    <!-- js for this page only -->
-<script src="../vendor/chart.js/dist/Chart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="../assets/js/page/index.js"></script>
-    <!-- ======= -->
-    <script src="../assets/js/main.js"></script>
-    <script>
-        Main.init()
-    </script>
+        <!-- js for this page only -->
+        <script src="../vendor/chart.js/dist/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="../assets/js/page/index.js"></script>
+        <!-- ======= -->
+        <script src="../assets/js/main.js"></script>
+        <script>
+            Main.init()
+        </script>
 </body>
 
 </html>

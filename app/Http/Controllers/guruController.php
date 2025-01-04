@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,9 +26,9 @@ class GuruController extends Controller
     }
     public function dash_guru()
     {
-        return view('guru.dash_guru', [
-            'title' => 'Dashboard Guru'
-        ]);
+        $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
+        return view('guru.dash_guru', compact('data_siswa'));
+
     }
     public function store(Request $request)
     {
