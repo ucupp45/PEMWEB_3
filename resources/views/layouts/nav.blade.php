@@ -22,7 +22,7 @@
               <li><a href="siswa" class="link"><i class="ti-desktop"></i> Data Siswa</a></li>
               <li><a href="#" class="link"><i class="ti-notepad"></i> Data Nilai</a></li>
               <li><a href="#" class="link"><i class="ti-layers-alt"></i> Jadwal Kelas</a></li>
-              <li><a href="#" class="link"><i class="ti-book"></i> Materi</a></li>
+              <li><a href="#" class="link"><i class="ti-book"></i> Kehadiran</a></li>
               <li><a href="charts.html" class="link"><i class="ti-write"></i> Konsultasi</a></li>
           </ul>
       </div>
