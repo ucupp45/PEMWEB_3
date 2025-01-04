@@ -23,21 +23,30 @@
 <body>
     <div id="app">
         <div class="shadow-header"></div>
-          @include('guru.header')
-          @include('guru.nav')
-          @yield('content')
-        <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="../vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+        @include('layouts.header')
+        @include('layouts.nav')
+        @yield('content')
+    @include('layouts.setting')
+    <footer>
+        <span>SIMPA 2025</span>
+    </footer>
+        <div class="overlay action-toggle">
+        </div>
+    </div>
+    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 
-        <!-- js for this page only -->
-        <script src="../vendor/chart.js/dist/Chart.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <script src="../assets/js/page/index.js"></script>
-        <!-- ======= -->
-        <script src="../assets/js/main.js"></script>
-        <script>
-            Main.init()
-        </script>
+    <!-- js for this page only -->
+    <script src="../vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="../assets/js/page/index.js"></script>
+    <!-- ======= -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        Main.init()
+    </script>
 </body>
 
 </html>

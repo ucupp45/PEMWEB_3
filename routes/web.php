@@ -6,6 +6,8 @@ use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeknisiController;
 
+
+
 // Rute untuk login dan registrasi
 
 Route::get('/ortu', [ortuController::class, 'index']);

@@ -1,4 +1,4 @@
-@extends('guru.master')  
+@extends('layouts.master')  
 
 @push('css')
         <!-- CSS for this page only -->
@@ -125,12 +125,8 @@
             </div>
         </div>
     </div>
-    @include('guru.setting')
+  
 
-    <footer>
-        <span>SIMPA 2025</span>
-    </footer>
-    <div class="overlay action-toggle">
-    </div>
+
 </div>
 @endsection
