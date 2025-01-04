@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelajaran;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Siswa;

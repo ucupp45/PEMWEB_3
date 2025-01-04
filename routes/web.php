@@ -77,6 +77,11 @@ Route::get('/dash_admin/teknisi/{id}/edit', [AdminController::class, 'editTeknis
 Route::put('/dash_admin/teknisi/{id}', [AdminController::class, 'updateTeknisi'])->name('admin.updateTeknisi');
 Route::delete('/dash_admin/Teknisi/{id}', [AdminController::class, 'destroyTeknisi'])->name('admin.destroyTeknisi');
 
+Route::post('/dash_admin/storePelajaran', [AdminController::class, 'storePelajaran'])->name('admin.storePelajaran');
+Route::get('/dash_admin/pelajaran/{id}/edit', [AdminController::class, 'editPelajaran'])->name('admin.editPelajaran');
+Route::put('/dash_admin/pelajaran/{id}', [AdminController::class, 'updatePelajaran'])->name('admin.updatePelajaran');
+Route::delete('/dash_admin/pelajaran/{id}', [AdminController::class, 'destroyPelajaran'])->name('admin.destroyPelajaran');
+
 
 
 Route::get('/teknisi', [TeknisiController::class, 'index']);
