@@ -57,6 +57,26 @@ Route::post('/admin/store', [adminController::class, 'store']);
 Route::get('/login', [adminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/login/admin', [adminController::class, 'login'])->name('admin.login.submit');
 Route::post('/logout/admin', [adminController::class, 'logout'])->name('admin.logout'); // Logout admin
+Route::post('/dash_admin/siswa', [adminController::class, 'storeSiswa'])->name('admin.storeSiswa');
+Route::get('/siswa/{id}/edit', [adminController::class, 'editSiswa']);
+Route::put('/dash_admin/siswa/{id}', [adminController::class, 'updateSiswa']);
+Route::delete('/dash_admin/siswa/{id}', [adminController::class, 'destroySiswa'])->name('admin.destroySiswa');
+// Route untuk mengelola Guru
+Route::post('/dash_admin/storeGuru', [adminController::class, 'storeGuru'])->name('admin.storeGuru');
+Route::get('/dash_admin/guru/{id}/edit', [adminController::class, 'editGuru'])->name('admin.editGuru');
+Route::put('/dash_admin/guru/{id}', [adminController::class, 'updateGuru'])->name('admin.updateGuru');
+Route::delete('/dash_admin/guru/{id}', [adminController::class, 'destroyGuru'])->name('admin.destroyGuru');
+
+
+Route::post('/dash_admin/storeAdmin', [adminController::class, 'storeAdmin'])->name('admin.storeAdmin');
+// Route to edit an admin (AJAX)
+Route::get('/dash_admin/admin/{id}/edit', [adminController::class, 'editAdmin'])->name('admin.editGuru');
+
+// Route to update an admin
+Route::put('/dash_admin/admin/{id}', [adminController::class, 'updateAdmin'])->name('admin.updateGuru');
+
+// Route to delete an admin
+Route::delete('/dash_admin/admin/{id}', [adminController::class, 'destroyAdmin'])->name('admin.destroyGuru');
 
 
 
@@ -66,3 +86,10 @@ Route::post('/teknisi/store', [TeknisiController::class, 'store']);
 Route::get('/login', [TeknisiController::class, 'showLoginForm'])->name('teknisi.login');
 Route::post('/login/teknisi', [TeknisiController::class, 'login'])->name('teknisi.login.submit');
 Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('teknisi.logout');
+
+
+
+// Menampilkan data siswa 
+// Route::resource('siswa', [siswaController::class,'index']);
+
+

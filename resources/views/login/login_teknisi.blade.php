@@ -1,6 +1,16 @@
 @extends('layouts.main')
 
 @section('container')
+<!-- Menampilkan error login jika ada -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <main class="form-signin text-center">
         <h1 class="h3 fw-normal">Login Teknisi</h1>
         <form method="POST" action="{{ route('teknisi.login.submit') }}">

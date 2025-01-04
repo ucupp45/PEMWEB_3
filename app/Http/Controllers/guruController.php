@@ -19,15 +19,23 @@ class GuruController extends Controller
 
     }
 
+<<<<<<< HEAD
     #menampilkan data siswa
+=======
+    public function showAdminDashboard()
+    {
+        // Ambil semua data guru
+        $gurus = Guru::all();
+        dd($gurus);
+        // Kirim data ke view 'admin.dash_admin'
+        return view('admin.dash_admin', compact('gurus'));
+    }
+>>>>>>> 163b2b1d2e2efffc1a5590c96a6314a56712d4e7
     public function dash_guru()
     {
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
         return view('guru.dash_guru', compact('data_siswa'));
 
-        return view('guru.dash_guru', compact([
-            'title' => 'Dashboard Guru'
-        , 'data_siswa']));
     }
 
     public function store(Request $request)
