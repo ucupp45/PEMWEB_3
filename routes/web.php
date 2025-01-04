@@ -66,16 +66,16 @@ Route::get('/dash_admin/guru/{id}/edit', [adminController::class, 'editGuru'])->
 Route::put('/dash_admin/guru/{id}', [adminController::class, 'updateGuru'])->name('admin.updateGuru');
 Route::delete('/dash_admin/guru/{id}', [adminController::class, 'destroyGuru'])->name('admin.destroyGuru');
 
+// Routes for Admin Management
+Route::post('/dash_admin/storeAdmin', [AdminController::class, 'storeAdmin'])->name('admin.storeAdmin');
+Route::get('/dash_admin/admin/{id}/edit', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
+Route::put('/dash_admin/admin/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin');
+Route::delete('/dash_admin/admin/{id}', [AdminController::class, 'destroyAdmin'])->name('admin.destroyAdmin');
 
-Route::post('/dash_admin/storeAdmin', [adminController::class, 'storeAdmin'])->name('admin.storeAdmin');
-// Route to edit an admin (AJAX)
-Route::get('/dash_admin/admin/{id}/edit', [adminController::class, 'editAdmin'])->name('admin.editGuru');
-
-// Route to update an admin
-Route::put('/dash_admin/admin/{id}', [adminController::class, 'updateAdmin'])->name('admin.updateGuru');
-
-// Route to delete an admin
-Route::delete('/dash_admin/admin/{id}', [adminController::class, 'destroyAdmin'])->name('admin.destroyGuru');
+Route::post('/dash_admin/storeTeknisi', [AdminController::class, 'storeTeknisi'])->name('admin.storeTeknisi');
+Route::get('/dash_admin/teknisi/{id}/edit', [AdminController::class, 'editTeknisi'])->name('admin.editTeknisi');
+Route::put('/dash_admin/teknisi/{id}', [AdminController::class, 'updateTeknisi'])->name('admin.updateTeknisi');
+Route::delete('/dash_admin/Teknisi/{id}', [AdminController::class, 'destroyTeknisi'])->name('admin.destroyTeknisi');
 
 
 
