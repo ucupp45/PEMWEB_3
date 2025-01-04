@@ -19,9 +19,6 @@ class GuruController extends Controller
 
     }
 
-<<<<<<< HEAD
-    #menampilkan data siswa
-=======
     public function showAdminDashboard()
     {
         // Ambil semua data guru
@@ -30,7 +27,6 @@ class GuruController extends Controller
         // Kirim data ke view 'admin.dash_admin'
         return view('admin.dash_admin', compact('gurus'));
     }
->>>>>>> 163b2b1d2e2efffc1a5590c96a6314a56712d4e7
     public function dash_guru()
     {
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
