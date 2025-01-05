@@ -9,7 +9,7 @@ class Nilai extends Model
 {
     use HasFactory;
 
-    protected $table = 'nilai';
+    protected $table = 'nilais';
 
     protected $fillable = [
         'siswa_id',
@@ -19,11 +19,11 @@ class Nilai extends Model
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class);
+        return $this->belongsTo(Siswa::class, 'id_siswa');
     }
 
     public function pelajaran()
     {
-        return $this->belongsTo(Pelajaran::class);
+        return $this->belongsTo(Pelajaran::class, 'id_');
     }
 }

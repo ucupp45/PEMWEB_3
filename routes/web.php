@@ -97,3 +97,4 @@ Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('tekn
 // Route::resource('siswa', [siswaController::class,'index']);
 
 
+
