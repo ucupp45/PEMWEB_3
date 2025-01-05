@@ -227,7 +227,6 @@
                             <li><a href="#daftarsiswa" class="link"><span>Daftar Siswa</span></a></li>
                             <li><a href="#daftarnilai" class="link"><span>Nilai</span></a></li>
                             <li><a href="#daftarpelajaran" class="link"><span>Pelajaran</span></a></li>
-                            <li><a href="element-card.html" class="link"><span>Konsultasi</span></a></li>
                         </ul>
                     </li>
                     <li>
@@ -735,37 +734,29 @@
     </div>
 </div>
 
-<!-- Modal for Edit Nilai -->
-<div class="modal fade" id="editNilaiModal" tabindex="-1" aria-labelledby="editNilaiModalLabel" aria-hidden="true">
+<!-- Modal for Edit Pelajaran -->
+<div class="modal fade" id="editPelajaranModal" tabindex="-1" aria-labelledby="editPelajaranModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editNilaiModalLabel">Edit Nilai</h5>
+                <h5 class="modal-title" id="editPelajaranModalLabel">Edit Pelajaran</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="editNilaiForm" method="POST">
+            <form id="editPelajaranForm" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="edit_siswa_id" class="form-label">Siswa</label>
-                        <select class="form-control" id="edit_siswa_id" name="siswa_id" required>
-                            @foreach ($data_siswa as $siswa)
-                                <option value="{{ $siswa->id }}">{{ $siswa->nama }} ({{ $siswa->nik }})</option>
-                            @endforeach
-                        </select>
+                        <label for="edit_nama_pelajaran" class="form-label">Nama Pelajaran</label>
+                        <input type="text" class="form-control" id="edit_nama_pelajaran" name="nama_pelajaran" required>
                     </div>
                     <div class="mb-3">
-                        <label for="edit_pelajaran_id" class="form-label">Pelajaran</label>
-                        <select class="form-control" id="edit_pelajaran_id" name="pelajaran_id" required>
-                            @foreach ($data_pelajaran as $pelajaran)
-                                <option value="{{ $pelajaran->id }}">{{ $pelajaran->nama_pelajaran }}</option>
+                        <label for="edit_guru_id" class="form-label">Guru</label>
+                        <select class="form-control" id="edit_guru_id" name="guru_id" required>
+                            @foreach ($data_guru as $guru)
+                                <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit_nilai" class="form-label">Nilai</label>
-                        <input type="number" step="0.01" class="form-control" id="edit_nilai" name="nilai" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -776,6 +767,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Include jQuery and Bootstrap JS for Modal functionality -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

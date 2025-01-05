@@ -369,7 +369,7 @@ class adminController extends Controller
 
         $validated = $request->validate([
             'nama_pelajaran' => 'required|string|max:255',
-            'guru_id' => 'required|exists:gurus,id', // Validasi foreign key ke tabel 'gurus'
+            'guru_id' => 'required|exists:guru,id', // Validasi foreign key ke tabel 'gurus'
         ]);
 
         $pelajaran->update($validated);
@@ -391,7 +391,7 @@ class adminController extends Controller
     {
         $validated = $request->validate([
             'nama_pelajaran' => 'required|string|max:255',
-            'guru_id' => 'required|exists:gurus,id', // Validasi foreign key ke tabel 'gurus'
+            'guru_id' => 'required|exists:guru,id', // Validasi foreign key ke tabel 'gurus'
         ]);
 
         Pelajaran::create($validated);

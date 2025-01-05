@@ -14,21 +14,21 @@ class PelajaranSeeder extends Seeder
     public function run(): void
     {
         $dataPelajaran = [
-            ['nama_pelajaran' => 'Matematika Dasar', 'guru_id' => 1],
-            ['nama_pelajaran' => 'Bahasa Indonesia', 'guru_id' => 2],
-            ['nama_pelajaran' => 'Bahasa Inggris', 'guru_id' => 3],
-            ['nama_pelajaran' => 'Ilmu Pengetahuan Alam', 'guru_id' => 4],
-            ['nama_pelajaran' => 'Ilmu Pengetahuan Sosial', 'guru_id' => 5],
-            ['nama_pelajaran' => 'Pendidikan Kewarganegaraan', 'guru_id' => 6],
-            ['nama_pelajaran' => 'Pendidikan Jasmani', 'guru_id' => 7],
-            ['nama_pelajaran' => 'Seni Budaya', 'guru_id' => 8],
-            ['nama_pelajaran' => 'Fisika', 'guru_id' => 9],
-            ['nama_pelajaran' => 'Kimia', 'guru_id' => 10],
-            ['nama_pelajaran' => 'Biologi', 'guru_id' => 11],
-            ['nama_pelajaran' => 'Ekonomi', 'guru_id' => 12],
-            ['nama_pelajaran' => 'Geografi', 'guru_id' => 13],
-            ['nama_pelajaran' => 'Sejarah', 'guru_id' => 14],
-            ['nama_pelajaran' => 'Teknologi Informasi', 'guru_id' => 15],
+            ['nama_pelajaran' => 'Matematika Dasar' ],
+            ['nama_pelajaran' => 'Bahasa Indonesia' ],
+            ['nama_pelajaran' => 'Bahasa Inggris' ],
+            ['nama_pelajaran' => 'Ilmu Pengetahuan Alam' ],
+            ['nama_pelajaran' => 'Ilmu Pengetahuan Sosial' ],
+            ['nama_pelajaran' => 'Pendidikan Kewarganegaraan' ],
+            ['nama_pelajaran' => 'Pendidikan Jasmani' ],
+            ['nama_pelajaran' => 'Seni Budaya' ],
+            ['nama_pelajaran' => 'Fisika' ],
+            ['nama_pelajaran' => 'Kimia'],
+            ['nama_pelajaran' => 'Biologi' ],
+            ['nama_pelajaran' => 'Ekonomi'],
+            ['nama_pelajaran' => 'Geografi' ],
+            ['nama_pelajaran' => 'Sejarah' ],
+            ['nama_pelajaran' => 'Teknologi Informasi' ],
         ];
 
         foreach ($dataPelajaran as $pelajaran) {
