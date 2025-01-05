@@ -9,15 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-
     <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../vendor/perfect-scrollbar/css/perfect-scrollbar.css">
-
-    <!-- CSS for this page only -->
     <link rel="stylesheet" href="../vendor/chart.js/dist/Chart.min.css">
-    <!-- End CSS  -->
-
     <link rel="stylesheet" href="../assets/css/style.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap-override.min.css">
     <link rel="stylesheet" id="theme-color" href="../assets/css/dark.min.css">
@@ -42,81 +37,7 @@
                                 <a class="dropdown-item" href="#">Message</a>
                             </li>
                             <li class="menu-content ps-menu">
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="../assets/images/avatar1.png" class="rounded-circle w-100"
-                                            alt="user1">
-                                    </div>
-                                    <div class="message-content read">
-                                        <div class="subject">
-                                            John
-                                        </div>
-                                        <div class="body">
-                                            Please call me at 9pm
-                                        </div>
-                                        <div class="time">Just now</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100"
-                                            alt="user1">
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="subject">
-                                            Michele
-                                        </div>
-                                        <div class="body">
-                                            Please come to my party
-                                        </div>
-                                        <div class="time">3 hours ago</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="../assets/images/avatar1.png" class="rounded-circle w-100"
-                                            alt="user1">
-                                    </div>
-                                    <div class="message-content read">
-                                        <div class="subject">
-                                            Brad
-                                        </div>
-                                        <div class="body">
-                                            I have something to discuss, please call me soon
-                                        </div>
-                                        <div class="time">3 hours ago</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100"
-                                            alt="user1">
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="subject">
-                                            Anel
-                                        </div>
-                                        <div class="body">
-                                            Sorry i'm late
-                                        </div>
-                                        <div class="time">8 hours ago</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-image">
-                                        <img src="../assets/images/avatar2.png" class="rounded-circle w-100"
-                                            alt="user1">
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="subject">
-                                            Mary
-                                        </div>
-                                        <div class="body">
-                                            Please answer my question last night
-                                        </div>
-                                        <div class="time">Last month</div>
-                                    </div>
-                                </a>
+                                <!-- Messages here -->
                             </li>
                         </ul>
                     </div>
@@ -130,39 +51,7 @@
                                 <a class="dropdown-item" href="#">Notification</a>
                             </li>
                             <li class="menu-content ps-menu">
-                                <a href="#">
-                                    <div class="message-icon text-danger">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                    </div>
-                                    <div class="message-content read">
-                                        <div class="body">
-                                            There's incoming event, don't miss it!!
-                                        </div>
-                                        <div class="time">Just now</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-icon text-info">
-                                        <i class="fas fa-info"></i>
-                                    </div>
-                                    <div class="message-content read">
-                                        <div class="body">
-                                            Your licence will expired soon
-                                        </div>
-                                        <div class="time">3 hours ago</div>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="message-icon text-success">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="body">
-                                            Successfully register new user
-                                        </div>
-                                        <div class="time">8 hours ago</div>
-                                    </div>
-                                </a>
+                                <!-- Notifications here -->
                             </li>
                         </ul>
                     </div>
@@ -170,26 +59,21 @@
                         <a href="#" class="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="label">
                                 <span></span>
-                                <div>Admin</div>
+                                <div>Akun</div>
                             </div>
-                            <img class="img-user" src="../assets/images/avatar1.png" alt="user"srcset="">
+                            <img class="img-user" src="../assets/images/avatar1.png" alt="user" srcset="">
                         </a>
                         <ul class="dropdown-menu small">
                             <li class="menu-content ps-menu">
                                 <a href="#">
-                                    <div class="description">
-                                        <i class="ti-user"></i> Akun
-                                    </div>
+                                    <div class="description"><i class="ti-user"></i> Kelola Akun</div>
                                 </a>
                                 <a href="#">
-                                    <div class="description">
-                                        <i class="ti-power-off"></i> Logout
-                                    </div>
+                                    <div class="description"><i class="ti-power-off"></i> Logout</div>
                                 </a>
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </header>
@@ -324,10 +208,14 @@
                                         </tbody>
                                     </table>
                                     {{ $data_siswa->withQueryString()->links() }}
-                                    <button type="button" class="btn btn-success " data-bs-toggle="modal"
+
+                                    <button type="button" class="btn btn-success mb-1 " data-bs-toggle="modal"
                                         data-bs-target="#addSiswaModal">
                                         Tambah Siswa
                                     </button>
+                                    <a href="{{ route('exportSiswa') }}" class="btn btn-success mb-1">Export to
+                                        Excel</a>
+
                                 </div>
                             </div>
                         </div>
@@ -537,10 +425,12 @@
                                         </tbody>
                                     </table>
                                     {{ $data_guru->withQueryString()->links() }}
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal"
                                         data-bs-target="#addGuruModal">
                                         Tambah Guru
                                     </button>
+                                    <a href="{{ route('exportGuru') }}" class="btn btn-success mb-1">Export to
+                                        Excel</a>
                                 </div>
                             </div>
                         </div>
@@ -739,32 +629,39 @@
 
                                     <!-- Pagination -->
                                     {{ $data_admin->links() }}
-                                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addAdminModal">
+                                    <button class="btn btn-success mb-1" data-bs-toggle="modal"
+                                        data-bs-target="#addAdminModal">
                                         Tambah Admin
                                     </button>
+                                    <a href="{{ route('exportAdmin') }}" class="btn btn-success mb-1">Export to
+                                        Excel</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Modal for Add Admin -->
-                <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
+                <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="addAdminModalLabel">Tambah Admin</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <form action="{{ route('admin.storeAdmin') }}" method="POST">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="nik" name="nik" required>
+                                        <input type="text" class="form-control" id="nik" name="nik"
+                                            required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" required>
+                                        <input type="text" class="form-control" id="nama" name="nama"
+                                            required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender</label>
@@ -775,29 +672,34 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="no_telepon" class="form-label">Nomor Telepon</label>
-                                        <input type="text" class="form-control" id="no_telepon" name="no_telepon">
+                                        <input type="text" class="form-control" id="no_telepon"
+                                            name="no_telepon">
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Modal for Edit Admin -->
-                <div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="editAdminModalLabel" aria-hidden="true">
+                <div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="editAdminModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="editAdminModalLabel">Edit Admin</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <form id="editAdminForm" method="POST">
                                 @csrf
@@ -805,11 +707,13 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="edit_nik" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="edit_nik" name="nik" required>
+                                        <input type="text" class="form-control" id="edit_nik" name="nik"
+                                            required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="edit_nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="edit_nama" name="nama" required>
+                                        <input type="text" class="form-control" id="edit_nama" name="nama"
+                                            required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="edit_gender" class="form-label">Gender</label>
@@ -820,18 +724,20 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="edit_no_telepon" class="form-label">Nomor Telepon</label>
-                                        <input type="text" class="form-control" id="edit_no_telepon" name="no_telepon">
+                                        <input type="text" class="form-control" id="edit_no_telepon"
+                                            name="no_telepon">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                
+
                 <script>
                     // Edit Admin - populate the modal with the admin details
                     function editAdmin(id) {
@@ -871,7 +777,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($data_teknisi as $teknisi)
+                                            @foreach ($data_teknisi as $teknisi)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $teknisi->nik }}</td>
@@ -879,13 +785,18 @@
                                                     <td>{{ $teknisi->gender == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                                                     <td>{{ $teknisi->no_telepon ?? 'N/A' }}</td>
                                                     <td>
-                                                        <button class="btn btn-info btn-sm" onclick="editTeknisi({{ $teknisi->id }})" data-bs-toggle="modal" data-bs-target="#editTeknisiModal">
+                                                        <button class="btn btn-info btn-sm"
+                                                            onclick="editTeknisi({{ $teknisi->id }})"
+                                                            data-bs-toggle="modal" data-bs-target="#editTeknisiModal">
                                                             Edit
                                                         </button>
-                                                        <form action="{{ route('admin.destroyTeknisi', $teknisi->id) }}" method="POST" class="d-inline">
+                                                        <form
+                                                            action="{{ route('admin.destroyTeknisi', $teknisi->id) }}"
+                                                            method="POST" class="d-inline">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Yakin ingin menghapus?')">
                                                                 Hapus
                                                             </button>
                                                         </form>
@@ -895,114 +806,130 @@
                                         </tbody>
                                     </table>
                                     {{ $data_teknisi->links() }}
-                                    <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addTeknisiModal">
+                                    <button class="btn btn-success mb-1" data-bs-toggle="modal"
+                                        data-bs-target="#addTeknisiModal">
                                         Tambah Teknisi
                                     </button>
-                                
+                                    <a href="{{ route('exportTeknisi') }}" class="btn btn-success mb-1">Export to
+                                        Excel</a>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal fade" id="addTeknisiModal" tabindex="-1" aria-labelledby="addTeknisiModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="{{ route('admin.storeTeknisi') }}" method="POST">
-                            @csrf
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addTeknisiModalLabel">Tambah Teknisi</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="nik" class="form-label">NIK</label>
-                                    <input type="text" class="form-control" id="nik" name="nik" required>
+                <div class="modal fade" id="addTeknisiModal" tabindex="-1" aria-labelledby="addTeknisiModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="{{ route('admin.storeTeknisi') }}" method="POST">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addTeknisiModalLabel">Tambah Teknisi</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" required>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="nik" name="nik"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="no_telepon" class="form-label">No. Telepon</label>
+                                        <input type="text" class="form-control" id="no_telepon"
+                                            name="no_telepon">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="gender" class="form-label">Gender</label>
-                                    <select class="form-control" id="gender" name="gender" required>
-                                        <option value="L">Laki-laki</option>
-                                        <option value="P">Perempuan</option>
-                                    </select>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="no_telepon" class="form-label">No. Telepon</label>
-                                    <input type="text" class="form-control" id="no_telepon" name="no_telepon">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal fade" id="editTeknisiModal" tabindex="-1" aria-labelledby="editTeknisiModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form id="editTeknisiForm" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editTeknisiModalLabel">Edit Teknisi</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="edit_nik" class="form-label">NIK</label>
-                                    <input type="text" class="form-control" id="edit_nik" name="nik" required>
+                <div class="modal fade" id="editTeknisiModal" tabindex="-1" aria-labelledby="editTeknisiModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="editTeknisiForm" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editTeknisiModalLabel">Edit Teknisi</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="edit_nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="edit_nama" name="nama" required>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="edit_nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="edit_nik" name="nik"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="edit_nama" name="nama"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_gender" class="form-label">Gender</label>
+                                        <select class="form-control" id="edit_gender" name="gender" required>
+                                            <option value="L">Laki-laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="edit_no_telepon" class="form-label">No. Telepon</label>
+                                        <input type="text" class="form-control" id="edit_no_telepon"
+                                            name="no_telepon">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="edit_gender" class="form-label">Gender</label>
-                                    <select class="form-control" id="edit_gender" name="gender" required>
-                                        <option value="L">Laki-laki</option>
-                                        <option value="P">Perempuan</option>
-                                    </select>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="edit_no_telepon" class="form-label">No. Telepon</label>
-                                    <input type="text" class="form-control" id="edit_no_telepon" name="no_telepon">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
+                <script>
+                    function editTeknisi(id) {
+                        $.ajax({
+                            url: '/dash_admin/teknisi/' + id + '/edit',
+                            method: 'GET',
+                            success: function(response) {
+                                $('#editTeknisiModal').modal('show');
+                                $('#editTeknisiForm').attr('action', '/dash_admin/teknisi/' + id);
+                                $('#edit_nik').val(response.nik);
+                                $('#edit_nama').val(response.nama);
+                                $('#edit_gender').val(response.gender);
+                                $('#edit_no_telepon').val(response.no_telepon);
+                            }
+                        });
+                    }
+                </script>
             </div>
-            
-            <script>
-                function editTeknisi(id) {
-                    $.ajax({
-                        url: '/dash_admin/teknisi/' + id + '/edit',
-                        method: 'GET',
-                        success: function(response) {
-                            $('#editTeknisiModal').modal('show');
-                            $('#editTeknisiForm').attr('action', '/dash_admin/teknisi/' + id);
-                            $('#edit_nik').val(response.nik);
-                            $('#edit_nama').val(response.nama);
-                            $('#edit_gender').val(response.gender);
-                            $('#edit_no_telepon').val(response.no_telepon);
-                        }
-                    });
-                }
-            </script>
 
 
             <div class="settings">
@@ -1016,7 +943,8 @@
                         <li class="fix-header">
                             <div class="fix-header-wrapper">
                                 <div class="form-check form-switch lg">
-                                    <label class="form-check-label" for="settingsFixHeader">Fixed Header</label>
+                                    <label class="form-check-label" for="settingsFixHeader">Fixed
+                                        Header</label>
                                     <input class="form-check-input toggle-settings" name="Header" type="checkbox"
                                         id="settingsFixHeader">
                                 </div>
@@ -1026,7 +954,8 @@
                         <li class="fix-footer">
                             <div class="fix-footer-wrapper">
                                 <div class="form-check form-switch lg">
-                                    <label class="form-check-label" for="settingsFixFooter">Fixed Footer</label>
+                                    <label class="form-check-label" for="settingsFixFooter">Fixed
+                                        Footer</label>
                                     <input class="form-check-input toggle-settings" name="Footer" type="checkbox"
                                         id="settingsFixFooter">
                                 </div>
@@ -1053,7 +982,8 @@
                         <li>
                             <div class="fix-footer-wrapper">
                                 <div class="form-check form-switch lg">
-                                    <label class="form-check-label" for="settingsFixFooter">Collapse Sidebar</label>
+                                    <label class="form-check-label" for="settingsFixFooter">Collapse
+                                        Sidebar</label>
                                     <input class="form-check-input toggle-settings" name="Sidebar" type="checkbox"
                                         id="settingsFixFooter">
                                 </div>

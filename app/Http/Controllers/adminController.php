@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SiswaExport;
 use App\Models\Pelajaran;
 use Illuminate\Http\Request;
 use App\Models\Admin;
@@ -9,9 +10,14 @@ use App\Models\Siswa;
 use App\Models\Guru;
 use App\Models\Teknisi;
 use Illuminate\Support\Facades\Hash;
+use Vtiful\Kernel\Excel;
 
 class adminController extends Controller
 {
+    public function export()
+    {
+        return Excel::download(new SiswaExport, 'data_siswa.xlsx');
+    }
     // Show registration form
     public function index()
     {
@@ -28,12 +34,13 @@ class adminController extends Controller
         return view('admin.dash_admin', compact('gurus'));
     }
 
-    public function dash_admin()
+    public function dash_admin(Request $request)
     {
         $data_siswa = Siswa::orderBy('id', 'desc')->paginate(5);
         $data_guru = Guru::orderBy('id', 'desc')->paginate(5);   // Data guru
         $data_admin = Admin::orderBy('id', 'desc')->paginate(10);
         $data_teknisi = Teknisi::orderBy('id', 'desc')->paginate(10);
+
 
         return view('admin.dash_admin', compact('data_siswa', 'data_guru', 'data_admin', 'data_teknisi'));
     }
@@ -197,63 +204,63 @@ class adminController extends Controller
         return redirect('/dash_admin')->with('success', 'Guru berhasil dihapus');
     }
 
-     // Store new admin
-     public function storeAdmin(Request $request)
-     {
-         // Validate the request
-         $validated = $request->validate([
-             'nik' => 'required|unique:admins,nik',
-             'nama' => 'required|string|max:255',
-             'gender' => 'required|in:L,P',
-             'no_telepon' => 'nullable|string|max:15',
-             'password' => 'required|string|min:8',
-         ]);
- 
-         // Hash the password
-         $validated['password'] = Hash::make($validated['password']);
- 
-         // Create new admin
-         Admin::create($validated);
- 
-         return redirect()->route('admin.dash_admin')->with('success', 'Admin added successfully.');
-     }
- 
-     // Show the edit admin form (for AJAX)
-     public function editAdmin($id)
-     {
-         $admin = Admin::findOrFail($id);
-         return response()->json($admin);
-     }
- 
-     // Update admin
-     public function updateAdmin(Request $request, $id)
-     {
-         $admin = Admin::findOrFail($id);
- 
-         // Validate the request
-         $validated = $request->validate([
-             'nik' => 'required',
-             'nama' => 'required',
-             'gender' => 'required',
-             'no_telepon' => 'nullable|string|max:15',
-         ]);
- 
-         // Update the admin record
-         $admin->update($validated);
- 
-         return redirect()->route('admin.dash_admin')->with('success', 'Admin updated successfully.');
-     }
- 
-     // Delete admin
-     public function destroyAdmin($id)
-     {
-         $admin = Admin::findOrFail($id);
-         $admin->delete();
- 
-         return redirect()->route('admin.dash_admin')->with('success', 'Admin deleted successfully.');
-     }
+    // Store new admin
+    public function storeAdmin(Request $request)
+    {
+        // Validate the request
+        $validated = $request->validate([
+            'nik' => 'required|unique:admins,nik',
+            'nama' => 'required|string|max:255',
+            'gender' => 'required|in:L,P',
+            'no_telepon' => 'nullable|string|max:15',
+            'password' => 'required|string|min:8',
+        ]);
 
-     public function storeTeknisi(Request $request)
+        // Hash the password
+        $validated['password'] = Hash::make($validated['password']);
+
+        // Create new admin
+        Admin::create($validated);
+
+        return redirect()->route('admin.dash_admin')->with('success', 'Admin added successfully.');
+    }
+
+    // Show the edit admin form (for AJAX)
+    public function editAdmin($id)
+    {
+        $admin = Admin::findOrFail($id);
+        return response()->json($admin);
+    }
+
+    // Update admin
+    public function updateAdmin(Request $request, $id)
+    {
+        $admin = Admin::findOrFail($id);
+
+        // Validate the request
+        $validated = $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'gender' => 'required',
+            'no_telepon' => 'nullable|string|max:15',
+        ]);
+
+        // Update the admin record
+        $admin->update($validated);
+
+        return redirect()->route('admin.dash_admin')->with('success', 'Admin updated successfully.');
+    }
+
+    // Delete admin
+    public function destroyAdmin($id)
+    {
+        $admin = Admin::findOrFail($id);
+        $admin->delete();
+
+        return redirect()->route('admin.dash_admin')->with('success', 'Admin deleted successfully.');
+    }
+
+    public function storeTeknisi(Request $request)
     {
         $validated = $request->validate([
             'nik' => 'required|unique:teknisis,nik',

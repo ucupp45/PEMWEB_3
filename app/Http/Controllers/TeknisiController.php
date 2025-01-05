@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 use App\Models\Teknisi;
 use Illuminate\Support\Facades\Hash;
@@ -70,4 +71,7 @@ class TeknisiController extends Controller
 
         return back()->withErrors(['login' => 'Invalid NIK or Password.']);
     }
+
+
+    
 }

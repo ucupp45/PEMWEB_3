@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Controllers\RuanganController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeknisiController;
 use App\Http\Controllers\siswaController;
+use App\Exports\GuruExport;
+use App\Exports\AdminExport;
+use App\Exports\TeknisiExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 // Rute untuk login dan registrasi
 
@@ -82,8 +88,6 @@ Route::get('/dash_admin/pelajaran/{id}/edit', [AdminController::class, 'editPela
 Route::put('/dash_admin/pelajaran/{id}', [AdminController::class, 'updatePelajaran'])->name('admin.updatePelajaran');
 Route::delete('/dash_admin/pelajaran/{id}', [AdminController::class, 'destroyPelajaran'])->name('admin.destroyPelajaran');
 
-
-
 Route::get('/teknisi', [TeknisiController::class, 'index']);
 Route::get('/dash_teknisi', [TeknisiController::class, 'dash_teknisi'])->name('teknisi.dash_teknisi');
 Route::post('/teknisi/store', [TeknisiController::class, 'store']);
@@ -93,7 +97,27 @@ Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('tekn
 
 
 
+Route::get('/export-siswa', [adminController::class, 'export'])->name('exportSiswa');
+Route::get('/export-guru', function () {
+    return Excel::download(new GuruExport, 'guru.xlsx');
+})->name('exportGuru');
+
+
+
+Route::get('/export-admin', function () {
+    return Excel::download(new AdminExport, 'admin.xlsx');
+})->name('exportAdmin');
+
+Route::get('/export-teknisi', function () {
+    return Excel::download(new TeknisiExport, 'teknisi.xlsx');
+})->name('exportTeknisi');
 // Menampilkan data siswa 
 // Route::resource('siswa', [siswaController::class,'index']);
 
+Route::get('/dash_teknisi', [RuanganController::class, 'dash_teknisi'])->name('teknisi.dash_teknisi');
 
+// Routes for CRUD operations on Ruangan
+Route::post('/dash_teknisi/storeRuangan', [RuanganController::class, 'store'])->name('ruangan.store');
+Route::get('/dash_teknisi/{id}/edit', [RuanganController::class, 'edit'])->name('ruangan.edit');
+Route::put('/dash_teknisi/{id}', [RuanganController::class, 'update'])->name('ruangan.update');
+Route::delete('/dash_teknisi/{id}', [RuanganController::class, 'destroy'])->name('ruangan.destroy');
