@@ -360,24 +360,21 @@
                                                 <th>Nama Siswa</th>
                                                 <th>Nama Mata Pelajaran</th>
                                                 <th>Nilai</th>
-                                                <th>Nilai Akhir</th>
                                             </tr>
                                         </thead>
                                         <tbody> 
                                             @foreach ($nilais as $nilai)
                                                 <tr>
-                                                    <td>{{ $nilai->iteration }}</td>
-                                                    <td>{{ $nilai->nik }}</td>
-                                                    <td>{{ $nilai->nama }}</td>
-                                                    <td>{{ $nilai->gender == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
-                                                    <td>{{ $nilai->no_telepon ?? 'N/A' }}</td>
+                                                    <td>{{ $nilai->siswa->nama }}</td>
+                                                    <td>{{ $nilai->pelajaran->nama_pelajaran }}</td>
+                                                    <td>{{ $nilai->nilai }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
 
                                     <!-- Pagination -->
-                                    {{ $nilais->links() }}
+                                    {{ $nilais->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
