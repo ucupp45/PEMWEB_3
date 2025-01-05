@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
         SiswaSeeder::class,
     ]);
 
-    $this->call([
-        GuruSeeder::class, // Menambahkan GuruSeeder
-    ]);
+    // $this->call([
+    //     GuruSeeder::class, // Menambahkan GuruSeeder
+    // ]);
 }
 
 }

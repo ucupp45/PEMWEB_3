@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Nilai;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +33,15 @@ class GuruController extends Controller
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
         return view('guru.dash_guru', compact('data_siswa'));
 
+        //data nilai
+
+        $data_nilai = Nilai::get();
+
+        return view('guru.dash_guru', compact([
+            'data_nilai'
+        ]));
     }
+
 
     public function store(Request $request)
     {

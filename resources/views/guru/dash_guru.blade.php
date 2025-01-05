@@ -15,17 +15,6 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Data Siswa</h3>
-                            <div class="pb-3">
-                                <form class="d-flex" action="{{ url('siswa') }}" method="get">
-                                    <input class="form-control me-1" type="search" name="katakunci"
-                                        value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci"
-                                        aria-label="Search">
-                                    <button class="btn btn-secondary" type="submit">Cari</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
@@ -55,7 +44,40 @@
                                 </table>
                                 {{ $data_siswa->withQueryString()->links() }}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        {{-- tabel nilai --}}
+        <div class="content-wrapper">
+            <div class="row same-height">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Data Nilai</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>NIlai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- @foreach ($data_nilai as $item)
+                                            <tr>
+                                                <td>{{ $item->siswa_id }}</td>
+                                                <td>{{ $item->pelajaran_id }}</td>
+                                                <td>{{ $item->nilai }}</td>
+                                            </tr>
+                                        @endforeach --}}
+                                    </tbody>
+                                </table>
+                                {{ $data_siswa->withQueryString()->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -238,28 +260,28 @@
 
         {{-- Kehadiran --}}
         <div class="content-wrapper">
-          <div class="row same-height">
-              <div class="col-md-12">
-                  <div class="card">
-                      <div class="card-header">
-                          <h3>Kehadiran Siswa</h3>
-                          <a href="3" class="btn btn-primary">Tambah Kehadiran</a>
-                          <a href="#" class="btn btn-secondary">Laporan Kehadiran</a>
-                      </div>
-                      <div class="card-body">
-                          <div class="table-responsive">
-                              <table class="table table-bordered mt-4">
-                                  <thead class="table-primary">
-                                      <tr>
-                                          <th>No</th>
-                                          <th>Nama Siswa</th>
-                                          <th>Mata Pelajaran</th>
-                                          <th>Status Kehadiran</th>
-                                          <th>Aksi</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                      {{-- @foreach ($data_kehadiran as $kehadiran)
+            <div class="row same-height">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Kehadiran Siswa</h3>
+                            <a href="3" class="btn btn-primary">Tambah Kehadiran</a>
+                            <a href="#" class="btn btn-secondary">Laporan Kehadiran</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered mt-4">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>Status Kehadiran</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- @foreach ($data_kehadiran as $kehadiran)
                                           <tr>
                                               <td>{{ $loop->iteration }}</td>
                                               <td>{{ $kehadiran->siswa->nama }}</td>
@@ -273,14 +295,14 @@
                                                   </form>
                                               </td>
                                           </tr> --}}
-                                      {{-- @endforeach --}}
-                                  </tbody>
-                              </table>
-                              {{ $data_siswa->links() }}
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                                        {{-- @endforeach --}}
+                                    </tbody>
+                                </table>
+                                {{ $data_siswa->links() }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endsection
