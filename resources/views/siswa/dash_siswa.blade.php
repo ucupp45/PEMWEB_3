@@ -233,18 +233,18 @@
                             <span>Jadwal</span>
                         </a>
                         <ul class="sub-menu ">
-                            <li><a href="#daftarguru" class="link">
+                            <li><a href="#Jadwal" class="link">
                                     <span>Jadwal Pelajaran</span></a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#" class="main-menu has-dropdown">
-                            <i class="ti-notepad"></i>
+                            <i class="ti-user"></i>
                             <span>Nilai</span>
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="error-404.html" target="_blank" class="link"><span>Nilai Siswa</span></a></li>
+                        <ul class="sub-menu ">
+                            <li><a href="#Nilai" class="link"><span>Nilai Siswa</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -276,7 +276,6 @@
                                                 <th>No. Tlp</th>
                                                 <th>Tanggal Lahir</th>
                                                 <th>Alamat</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -289,12 +288,6 @@
                                                     <td>{{ $siswa->nomor_telepon }}</td>
                                                     <td>{{ $siswa->tanggal_lahir }}</td>
                                                     <td>{{ $siswa->alamat }}</td>
-                                                    <td>
-                                                        <!-- Edit Button -->
-                                                        <button class="btn btn-info btn-sm"
-                                                            onclick="editSiswa({{ $siswa->id }})">Edit</button> 
-                                                    </td>
-                                                    
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -306,103 +299,17 @@
                     </div>
                 </div>
                     
-                <!-- Modal for Edit Siswa -->
-                <div class="modal fade" id="editSiswaModal" tabindex="-1" aria-labelledby="editSiswaModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editSiswaModalLabel">Edit Siswa</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form id="editSiswaForm" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label for="edit_nik" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="edit_nik" name="nik"
-                                            required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="edit_nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="edit_nama" name="nama"
-                                            required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="edit_gender" class="form-label">Gender</label>
-                                        <select class="form-control" id="edit_gender" name="gender" required>
-                                            <option value="L">Laki-laki</option>
-                                            <option value="P">Perempuan</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="edit_nama_orang_tua" class="form-label">Nama Orang Tua</label>
-                                        <input type="text" class="form-control" id="edit_nama_orang_tua"
-                                            name="nama_orang_tua" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="edit_nomor_telepon" class="form-label">Nomor Telepon</label>
-                                        <input type="text" class="form-control" id="edit_nomor_telepon"
-                                            name="nomor_telepon" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="edit_tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="edit_tanggal_lahir"
-                                            name="tanggal_lahir" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="edit_alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="edit_alamat" name="alamat"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> 
-
-
+                
                 <!-- Include jQuery and Bootstrap JS for Modal functionality -->
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-                <script>
-                    // Handle Edit Modal
-                    function editSiswa(id) {
-                        $.ajax({
-                            url: '/siswa/' + id + '/edit',
-                            method: 'GET',
-                            success: function(response) {
-                                $('#editSiswaModal').modal('show');
-                                $('#editSiswaForm').attr('action', '/dash_admin/siswa/' + id);
-                                $('#edit_nik').val(response.nik);
-                                $('#edit_nama').val(response.nama);
-                                $('#edit_gender').val(response.gender);
-                                $('#edit_nama_orang_tua').val(response.nama_orang_tua);
-                                $('#edit_nomor_telepon').val(response.nomor_telepon);
-                                $('#edit_tanggal_lahir').val(response.tanggal_lahir);
-                                $('#edit_alamat').val(response.alamat);
-                            }
-                        });
-                    }
-                    // Fungsi untuk membuka modal edit guru dan mengisi data yang dipilih
-                </script> 
-
-
-
-
+                
                 {{-- Jadwal --}}
                 <div class="row same-height">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header" id="daftarguru">
+                            <div class="card-header" id="Jadwal">
                                 <h4>Jadwal Siswa</h4>
 
                             </div>
@@ -442,7 +349,7 @@
                 <div class="row same-height">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header" id="daftaradmin">
+                            <div class="card-header" id="Nilai">
                                 <h4>Nilai Siswa</h4>
                             </div>
                             <div class="card-body">

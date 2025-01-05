@@ -31,7 +31,7 @@ class ortuController extends Controller
         $siswas = siswa::paginate(10); // Ambil 10 data per halaman      
         $jadwals = Jadwal::with(['pelajaran', 'ruangan'])->paginate(10); // Ambil 10 data jadwal per halaman
         $nilais = Nilai::with(['siswa', 'pelajaran', 'ruangan'])->paginate(10);
-
+        // dd($siswas)
         return view('siswa.dash_siswa', compact('siswas', 'jadwals','nilais'));
     }
 
