@@ -38,3 +38,62 @@ Route::get('/regg', function () {
 Route::get('/reggg', function () {
     return view('login.regadmin', ['title' => 'Registrasi']);
 });
+Route::get('/regggg', function () {
+    return view('login.regteknisi', ['title' => 'Registrasi']);
+});
+
+
+Route::get('/guru', [GuruController::class, 'index']);
+Route::get('/dash_guru', [GuruController::class, 'dash_guru'])->name('guru.dash_guru'); // Rute dashboard siswa
+Route::post('/guru/store', [GuruController::class, 'store']);
+Route::get('/login', [GuruController::class, 'showLoginForm'])->name('guru.login');
+Route::post('/login/guru', [GuruController::class, 'login'])->name('guru.login.submit');
+Route::post('/logout/guru', [GuruController::class, 'logout'])->name('guru.logout'); // Logout siswa
+
+Route::get('/admin', [adminController::class, 'index']);
+Route::get('/dash_admin', [adminController::class, 'dash_admin'])->name('admin.dash_admin'); // Rute dashboard admin
+Route::post('/admin/store', [adminController::class, 'store']);
+Route::get('/login', [adminController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/login/admin', [adminController::class, 'login'])->name('admin.login.submit');
+Route::post('/logout/admin', [adminController::class, 'logout'])->name('admin.logout'); // Logout admin
+Route::post('/dash_admin/siswa', [adminController::class, 'storeSiswa'])->name('admin.storeSiswa');
+Route::get('/siswa/{id}/edit', [adminController::class, 'editSiswa']);
+Route::put('/dash_admin/siswa/{id}', [adminController::class, 'updateSiswa']);
+Route::delete('/dash_admin/siswa/{id}', [adminController::class, 'destroySiswa'])->name('admin.destroySiswa');
+// Route untuk mengelola Guru
+Route::post('/dash_admin/storeGuru', [adminController::class, 'storeGuru'])->name('admin.storeGuru');
+Route::get('/dash_admin/guru/{id}/edit', [adminController::class, 'editGuru'])->name('admin.editGuru');
+Route::put('/dash_admin/guru/{id}', [adminController::class, 'updateGuru'])->name('admin.updateGuru');
+Route::delete('/dash_admin/guru/{id}', [adminController::class, 'destroyGuru'])->name('admin.destroyGuru');
+
+// Routes for Admin Management
+Route::post('/dash_admin/storeAdmin', [AdminController::class, 'storeAdmin'])->name('admin.storeAdmin');
+Route::get('/dash_admin/admin/{id}/edit', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
+Route::put('/dash_admin/admin/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin');
+Route::delete('/dash_admin/admin/{id}', [AdminController::class, 'destroyAdmin'])->name('admin.destroyAdmin');
+
+Route::post('/dash_admin/storeTeknisi', [AdminController::class, 'storeTeknisi'])->name('admin.storeTeknisi');
+Route::get('/dash_admin/teknisi/{id}/edit', [AdminController::class, 'editTeknisi'])->name('admin.editTeknisi');
+Route::put('/dash_admin/teknisi/{id}', [AdminController::class, 'updateTeknisi'])->name('admin.updateTeknisi');
+Route::delete('/dash_admin/Teknisi/{id}', [AdminController::class, 'destroyTeknisi'])->name('admin.destroyTeknisi');
+
+Route::post('/dash_admin/storePelajaran', [AdminController::class, 'storePelajaran'])->name('admin.storePelajaran');
+Route::get('/dash_admin/pelajaran/{id}/edit', [AdminController::class, 'editPelajaran'])->name('admin.editPelajaran');
+Route::put('/dash_admin/pelajaran/{id}', [AdminController::class, 'updatePelajaran'])->name('admin.updatePelajaran');
+Route::delete('/dash_admin/pelajaran/{id}', [AdminController::class, 'destroyPelajaran'])->name('admin.destroyPelajaran');
+
+
+
+Route::get('/teknisi', [TeknisiController::class, 'index']);
+Route::get('/dash_teknisi', [TeknisiController::class, 'dash_teknisi'])->name('teknisi.dash_teknisi');
+Route::post('/teknisi/store', [TeknisiController::class, 'store']);
+Route::get('/login', [TeknisiController::class, 'showLoginForm'])->name('teknisi.login');
+Route::post('/login/teknisi', [TeknisiController::class, 'login'])->name('teknisi.login.submit');
+Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('teknisi.logout');
+
+
+
+// Menampilkan data siswa 
+// Route::resource('siswa', [siswaController::class,'index']);
+
+

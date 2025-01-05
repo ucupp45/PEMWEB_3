@@ -12,11 +12,11 @@ class siswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
-        $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
-        return view('guru.dash_guru', compact('data_siswa'));
-    }
+    // public function index(Request $request)
+    // {
+    //     $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
+    //     return view('guru.dash_guru', compact('data_siswa'));
+    // }
  
     /**
      * Show the form for creating a new resource.

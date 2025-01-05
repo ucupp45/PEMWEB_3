@@ -21,5 +21,11 @@ class Siswa extends Model
         'alamat',
         'password', // Kolom baru
     ];
+
+      // Relasi dengan Nilai
+      public function nilai()
+      {
+          return $this->hasMany(Nilai::class);
+      }
     
 }
