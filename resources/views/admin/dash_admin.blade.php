@@ -880,7 +880,7 @@
                                                     <td>{{ $teknisi->no_telepon ?? 'N/A' }}</td>
                                                     <td>
                                                         <button class="btn btn-info btn-sm" onclick="editTeknisi({{ $teknisi->id }})" data-bs-toggle="modal" data-bs-target="#editTeknisiModal">
-                                                            Editt
+                                                            Edit
                                                         </button>
                                                         <form action="{{ route('admin.destroyTeknisi', $teknisi->id) }}" method="POST" class="d-inline">
                                                             @csrf
