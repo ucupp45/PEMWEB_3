@@ -107,3 +107,6 @@ Route::get('/nilai/{id}/edit', [GuruController::class, 'edit_nilai'])->name('nil
 // Route untuk memperbarui nilai
 Route::put('/nilai/{id}', [GuruController::class, 'update_nilai'])->name('nilai.update');
 Route::delete('/nilai/{siswa_id}/{pelajaran_id}', [GuruController::class, 'destroy'])->name('nilai.destroy');
+
+Route::get('/dash-guru', [GuruController::class, 'grafikNilai'])->name('guru.dash_guru');
+

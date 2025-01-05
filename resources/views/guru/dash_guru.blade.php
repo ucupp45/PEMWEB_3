@@ -3,6 +3,8 @@
 @push('css')
     <!-- CSS for this page only -->
     <link rel="stylesheet" href="../vendor/chart.js/dist/Chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- End CSS  -->
 @endpush
 
@@ -15,6 +17,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Data Siswa</h3>
+
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
@@ -58,13 +61,72 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Data Nilai</h3>
+                            <div class="container">
+                                <div class="card">
+                                    <div class="container">
+                                        <h2 class="mt-3">Grafik Nilai Rata-Rata</h2>
+                                        <canvas id="nilaiChart" width="400" height="200"></canvas>
+                                        <script>
+                                            // Ambil averageNilai dari backend
+                                            const averageData = @json($averageNilai);
+                                        
+                                            // Proses data untuk grafik
+                                            const labels = averageData.map(item => item.pelajaran.nama_pelajaran); // Nama pelajaran
+                                            const averages = averageData.map(item => item.average_nilai); // Nilai rata-rata
+                                        
+                                            // Inisialisasi Chart.js
+                                            const ctx = document.getElementById('nilaiChart').getContext('2d');
+                                            new Chart(ctx, {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: labels, // X-axis: Nama pelajaran
+                                                    datasets: [{
+                                                        label: 'Rata-Rata Nilai',
+                                                        data: averages, // Y-axis: Nilai rata-rata
+                                                        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Warna batang
+                                                        borderColor: 'rgba(54, 162, 235, 1)', // Warna border
+                                                        borderWidth: 1
+                                                    }]
+                                                },
+                                                options: {
+                                                    responsive: true,
+                                                    scales: {
+                                                        y: {
+                                                            beginAtZero: true // Sumbu Y mulai dari 0
+                                                        }
+                                                    },
+                                                    plugins: {
+                                                        tooltip: {
+                                                            callbacks: {
+                                                                // Menampilkan nama pelajaran dan rata-rata nilai pada tooltip
+                                                                title: (tooltipItems) => {
+                                                                    const index = tooltipItems[0].dataIndex;
+                                                                    return `Pelajaran: ${labels[index]}`;
+                                                                },
+                                                                label: (tooltipItem) => {
+                                                                    return `Rata-rata: ${tooltipItem.raw.toFixed(2)}`;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        </script>
+                                        
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
                             <!-- Button to Open the Modal -->
+                            <div class="container"></div>
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#tambahNilaiModal">
                                 Tambah Nilai
                             </button>
-                            
-
                             @if (session('success'))
                                 <div class="alert alert-success">{{ session('success') }}</div>
                             @endif
@@ -90,10 +152,14 @@
                                                         data-target="#editNilaiModal{{ $item->id }}">
                                                         Edit
                                                     </button>
-                                                    <form action="{{ route('nilai.destroy', ['siswa_id' => $item->siswa_id, 'pelajaran_id' => $item->pelajaran_id]) }}" method="POST" style="display:inline;">
+                                                    <form
+                                                        action="{{ route('nilai.destroy', ['siswa_id' => $item->siswa_id, 'pelajaran_id' => $item->pelajaran_id]) }}"
+                                                        method="POST" style="display:inline;">
                                                         @csrf
-                                                        @method('DELETE') <!-- Menggunakan metode DELETE untuk penghapusan -->
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus nilai ini?')">Hapus Nilai</button>
+                                                        @method('DELETE')
+                                                        <!-- Menggunakan metode DELETE untuk penghapusan -->
+                                                        <button type="submit" class="btn btn-danger"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus nilai ini?')">Hapus</button>
                                                     </form>
                                                 </td>
 
@@ -248,55 +314,42 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        {{-- Jadwal Kehadiran --}}
+        {{-- item Kehadiran --}}
         <div class="content-wrapper">
             <div class="row same-height">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Jadwal Pelajaran</h3>
-                            <!-- Tombol untuk menambah siswa baru -->
-                            {{-- <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Siswa</a> --}}
-                        </div>
-                        <div class="card-body">
+                            <h3>Data Siswa</h3>
+
                             <div class="table-responsive">
-                                <table class="table table-bordered mt-4">
-                                    <thead class="table-primary">
+                                <table class="table table-bordered">
+                                    <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Mata Pelajaran</th>
+                                            <th>Pelajaran</th>
                                             <th>Ruangan</th>
-                                            <th>Hari</th>
-                                            <th>Jam</th>
+                                            <th>Tanggal</th>
+                                            <th>Jam Mulai</th>
+                                            <th>Jam Selesai</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($data_jadwal as $jadwal)
-                                              <tr>
-                                                  <td>{{ $loop->iteration }}</td>
-                                                  <td>{{ $jadwal->mapel }}</td>
-                                                  <td>{{ $jadwal->ruangan }}</td>
-                                                  <td>{{ $jadwal->jam }}</td>
-                                                  <td>
-                                                      <a href="{{ route('jadwal.edit', $jadwal->id) }}" class="btn btn-warning">Edit</a>
-                                                      <form action="{{ route('jadwal.destroy', $jadwal->id) }}" method="POST" style="display:inline;">
-                                                          @csrf
-                                                          @method('DELETE')
-                                                          <button type="submit" class="btn btn-danger">Hapus</button>
-                                                      </form>
-                                                  </td>
-                                              </tr>
-                                          @endforeach --}}
+                                        @foreach ($jadwals as $item)
+                                        <tr>
+                                            <td>{{ $item->pelajaran->nama_pelajaran }}</td> <!-- Assuming 'nama' is the column in 'pelajarans' table -->
+                                            <td>{{ $item->ruangan->nama_ruangan }}</td> <!-- Assuming 'nama_ruangan' is the column in 'ruangans' table -->
+                                            <td>{{ $item->tanggal }}</td>
+                                            <td>{{ $item->jam_mulai }}</td>
+                                            <td>{{ $item->jam_selesai }}</td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                <!-- Untuk pagination -->
-                                {{ $data_siswa->links() }}
-
+                                {{ $jadwals->withQueryString()->links() }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
     @endsection

@@ -6,8 +6,10 @@ use App\Models\Guru;
 use App\Models\Nilai;
 use App\Models\Pelajaran;
 use App\Models\Siswa;
+use App\Models\Jadwal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class GuruController extends Controller
 {
@@ -30,7 +32,14 @@ class GuruController extends Controller
     {
         $data_siswa = Siswa::orderBy('id', 'desc')->paginate(5);
         $data_nilai = Nilai::with(['pelajaran', 'siswa'])->orderBy('id', 'desc')->paginate(5);
-        return view('guru.dash_guru', compact('data_siswa', 'data_nilai'));
+        // Prepare data for chart
+        $averageNilai = Nilai::select('pelajaran_id', DB::raw('avg(nilai) as average_nilai'))
+            ->groupBy('pelajaran_id')
+            ->with('pelajaran') // Mengambil data pelajaran
+            ->get();
+        $jadwals = Jadwal::with(['pelajaran', 'ruangan'])->orderBy('id', 'desc')->paginate(10);
+
+        return view('guru.dash_guru', compact('data_siswa', 'data_nilai', 'averageNilai','jadwals'));
     }
 
     // Menyimpan nilai baru
