@@ -5,7 +5,8 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeknisiController;
-use App\Http\Controllers\siswaController;
+
+
 
 // Rute untuk login dan registrasi
 
@@ -60,6 +61,15 @@ Route::post('/dash_admin/siswa', [adminController::class, 'storeSiswa'])->name('
 Route::get('/siswa/{id}/edit', [adminController::class, 'editSiswa']);
 Route::put('/dash_admin/siswa/{id}', [adminController::class, 'updateSiswa']);
 Route::delete('/dash_admin/siswa/{id}', [adminController::class, 'destroySiswa'])->name('admin.destroySiswa');
+Route::post('/dash_admin/nilai', [adminController::class, 'storeNilai'])->name('admin.storeNilai');
+Route::get('/nilai/{id}/edit', [adminController::class, 'editNilai']);
+Route::put('/dash_admin/nilai/{id}', [adminController::class, 'updateNilai']);
+Route::delete('/dash_admin/nilai/{id}', [adminController::class, 'destroyNilai'])->name('admin.destroyNilai');
+Route::post('/dash_admin/pelajaran', [adminController::class, 'storePelajaran'])->name('admin.storePelajaran');
+Route::get('/pelajaran/{id}/edit', [adminController::class, 'editPelajaran']);
+Route::put('/dash_admin/pelajaran/{id}', [adminController::class, 'updatePelajaran']);
+Route::delete('/dash_admin/pelajaran/{id}', [adminController::class, 'destroyPelajaran'])->name('admin.destroyPelajaran');
+
 // Route untuk mengelola Guru
 Route::post('/dash_admin/storeGuru', [adminController::class, 'storeGuru'])->name('admin.storeGuru');
 Route::get('/dash_admin/guru/{id}/edit', [adminController::class, 'editGuru'])->name('admin.editGuru');
@@ -94,10 +104,4 @@ Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('tekn
 
 
 // Menampilkan data siswa 
-<<<<<<< HEAD
 // Route::resource('siswa', [siswaController::class,'index']);
-
-
-=======
-Route::resource('siswa', [siswaController::class,'index']);
->>>>>>> 43266e9d41777a0fc92b9bbed2184dc00648c014

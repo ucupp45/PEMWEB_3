@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Nilai;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,6 +15,9 @@ class GuruController extends Controller
         return view('login.login_guru', [
             'title' => 'Login Guru'
         ]);
+
+        // Ambil semua data mata pelajaran
+
     }
 
     public function showAdminDashboard()
@@ -28,7 +33,16 @@ class GuruController extends Controller
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
         return view('guru.dash_guru', compact('data_siswa'));
 
+        //data nilai
+
+        $data_nilai = Nilai::get();
+
+        return view('guru.dash_guru', compact([
+            'data_nilai'
+        ]));
     }
+
+
     public function store(Request $request)
     {
         // Validasi input
@@ -78,4 +92,7 @@ class GuruController extends Controller
         // If login fails
         return back()->withErrors(['login' => 'NUPTK atau Password salah.']);
     }
+
+
+
 }

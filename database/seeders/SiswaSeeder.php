@@ -10,7 +10,7 @@ use Faker\Factory as Faker;
 class SiswaSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the d6atabase seeds.
      */
     public function run(): void
     {
