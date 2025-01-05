@@ -5,6 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeknisiController;
+use App\Http\Controllers\siswaController;
 
 // Rute untuk login dan registrasi
 
