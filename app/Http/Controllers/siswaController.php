@@ -65,4 +65,18 @@ class siswaController extends Controller
     {
         //
     }
+    public function index(Request $request)
+    {
+        // Ambil kata kunci dari request
+        $katakunci = $request->katakunci;
+
+        // Query untuk mengambil data siswa berdasarkan kata kunci
+        $data_siswa = Siswa::where('nama', 'like', '%' . $katakunci . '%')
+            ->orWhere('nik', 'like', '%' . $katakunci . '%')
+            ->orWhere('nama_orang_tua', 'like', '%' . $katakunci . '%')
+            ->paginate(10);
+
+        // Kembalikan view dengan data siswa
+        return view('guru.dash_guru', compact('data_siswa'));
+    }
 }

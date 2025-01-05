@@ -2,31 +2,30 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Guru;
+use Illuminate\Support\Facades\Hash;
 use Faker\Factory as Faker;
 
 class GuruSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-        $faker = Faker::create(); // Membuat instance Faker untuk menghasilkan data dummy
+        $faker = Faker::create();
 
-        // Menambah 15 data guru
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             Guru::create([
-                'nuptk' => $faker->unique()->numerify('##########'), // NUPTK 10 digit
-                'nama' => $faker->name, // Nama guru
-                'tanggal_lahir' => $faker->date('Y-m-d', '1980-01-01'), // Tanggal lahir
-                'gender' => $faker->randomElement(['L', 'P']), // Gender (Laki-Laki/Perempuan)
-                'password' => \Illuminate\Support\Facades\Hash::make('password123'), // Password yang di-hash
-                'nomor_telepon' => $faker->phoneNumber, // Nomor telepon
-                'alamat' => $faker->address, // Alamat
+                'nuptk' => $faker->numerify('################'), // 16 digit NUPTK
+                'nama' => $faker->name, // Nama Guru
+                'tanggal_lahir' => $faker->dateTimeBetween('1990-01-01', '2005-10-10')->format('Y-m-d'), // Tahun 1990
+                'gender' => $faker->randomElement(['L', 'P']), // Gender L atau P
+                'password' => Hash::make('password123'), // Password default
+                'nomor_telepon' => $faker->numerify('08##########'), // Nomor telepon
+                'alamat' => $faker->address, // Alamat acak
             ]);
         }
     }

@@ -109,9 +109,8 @@
                         </a>
                         <ul class="sub-menu ">
                             <li><a href="#daftarsiswa" class="link"><span>Daftar Siswa</span></a></li>
-                            <li><a href="element-accordion.html" class="link"><span>Nilai</span></a></li>
-                            <li><a href="element-tabs-collapse.html" class="link"><span>Kesehatan</span></a></li>
-                            <li><a href="element-card.html" class="link"><span>Konsultasi</span></a></li>
+                            <li><a href="#daftarnilai" class="link"><span>Nilai</span></a></li>
+                            <li><a href="#daftarpelajaran" class="link"><span>Pelajaran</span></a></li>
                         </ul>
                     </li>
                     <li>
@@ -134,7 +133,6 @@
                             <li><a href="error-404.html" target="_blank" class="link"><span>Jadwal</span></a></li>
                             <li><a href="error-403.html" target="_blank" class="link"><span>Mata
                                         Pelajaran</span></a></li>
-                            <li><a href="error-500.html" target="_blank" class="link"><span>Ruangan</span></a></li>
                         </ul>
                     </li>
                     <li>
@@ -163,6 +161,13 @@
                             <div class="card-header " id="daftarsiswa">
                                 <h4>Daftar Siswa</h4>
                                 <!-- Tombol untuk membuka modal tambah siswa -->
+                            </div>
+                            <div class="m-3">
+                                <form class="d-flex" action="{{ url('siswa') }}" method="get">
+                                    <input class="form-control me-1" type="search" name="katakunci" 
+                                    value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
+                                    <button class="btn btn-primary" type="submit">Cari</button>
+                                </form>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -377,7 +382,306 @@
                     // Fungsi untuk membuka modal edit guru dan mengisi data yang dipilih
                 </script>
 
+{{-- DAFTAR NILAI --}}
+<div class="row same-height">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" id="daftarnilai">
+                <h4>Daftar Nilai</h4>
+                <!-- Tombol untuk membuka modal tambah nilai -->
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Siswa ID</th>
+                                <th>Pelajaran ID</th>
+                                <th>Nilai</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data_nilai as $item)
+                                <tr>
+                                    <!-- Menampilkan Siswa ID -->
+                                    <td>{{ $item->siswa_id }}</td>
+                                    <!-- Menampilkan Nama Pelajaran dengan relasi -->
+                                    <td>{{ $item->pelajaran_id }}</td>
+                                    <!-- Menampilkan Nilai -->
+                                    <td>{{ $item->nilai }}</td>
+                                    <td>
+                                        <!-- Edit Button -->
+                                        <button class="btn btn-info btn-sm" onclick="editNilai({{ $item->id }})">Edit</button>
 
+                                        <!-- Delete Button -->
+                                        <form action="{{ route('admin.destroyNilai', $item->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm m-1" onclick="return confirm('Are you sure you want to delete this data?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $data_nilai->withQueryString()->links() }}
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNilaiModal">
+                        Tambah Nilai
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Add Nilai -->
+<div class="modal fade" id="addNilaiModal" tabindex="-1" aria-labelledby="addNilaiModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addNilaiModalLabel">Tambah Nilai</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('admin.storeNilai') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="siswa_id" class="form-label">Siswa</label>
+                        <select class="form-control" id="siswa_id" name="siswa_id" required>
+                            @foreach ($data_siswa as $siswa)
+                                <option value="{{ $siswa->id }}">{{ $siswa->nama }} ({{ $siswa->nik }})</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pelajaran_id" class="form-label">Pelajaran</label>
+                        <select class="form-control" id="pelajaran_id" name="pelajaran_id" required>
+                            @foreach ($data_pelajaran as $pelajaran)
+                                <option value="{{ $pelajaran->id }}">{{ $pelajaran->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nilai" class="form-label">Nilai</label>
+                        <input type="number" step="0.01" class="form-control" id="nilai" name="nilai" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Edit Nilai -->
+<div class="modal fade" id="editNilaiModal" tabindex="-1" aria-labelledby="editNilaiModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editNilaiModalLabel">Edit Nilai</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editNilaiForm" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="edit_siswa_id" class="form-label">Siswa</label>
+                        <select class="form-control" id="edit_siswa_id" name="siswa_id" required>
+                            @foreach ($data_siswa as $siswa)
+                                <option value="{{ $siswa->id }}">{{ $siswa->nama }} ({{ $siswa->nik }})</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_pelajaran_id" class="form-label">Pelajaran</label>
+                        <select class="form-control" id="edit_pelajaran_id" name="pelajaran_id" required>
+                            @foreach ($data_pelajaran as $pelajaran)
+                                <option value="{{ $pelajaran->id }}">{{ $pelajaran->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_nilai" class="form-label">Nilai</label>
+                        <input type="number" step="0.01" class="form-control" id="edit_nilai" name="nilai" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Include jQuery and Bootstrap JS for Modal functionality -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Handle Edit Modal
+    function editNilai(id) {
+        $.ajax({
+            url: '/nilai/' + id + '/edit',  // Ganti dengan URL yang sesuai untuk mendapatkan data nilai
+            method: 'GET',
+            success: function(response) {
+                $('#editNilaiModal').modal('show');  // Menampilkan modal edit nilai
+                $('#editNilaiForm').attr('action', '/nilai/' + id);  // Mengatur form action dengan URL update nilai
+                $('#edit_siswa_id').val(response.siswa_id);  // Mengisi field Siswa
+                $('#edit_pelajaran_id').val(response.pelajaran_id);  // Mengisi field Pelajaran
+                $('#edit_nilai').val(response.nilai);  // Mengisi field Nilai
+            }
+        });
+    }
+</script>
+
+
+{{-- DAFTAR PELAJARAN --}}
+<div class="row same-height">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" id="daftarpelajaran">
+                <h4>Daftar Pelajaran</h4>
+                <!-- Tombol untuk membuka modal tambah pelajaran -->
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Pelajaran</th>
+                                <th>Guru</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data_pelajaran as $item)
+                                <tr>
+                                    <!-- Menampilkan Nomor -->
+                                    <td>{{ $loop->iteration }}</td>
+                                    <!-- Menampilkan Nama Pelajaran -->
+                                    <td>{{ $item->nama_pelajaran }}</td>
+                                    <!-- Menampilkan Nama Guru dengan relasi -->
+                                    <td>{{ $item->guru->nama ?? 'Belum Ditentukan' }}</td>
+                                    <td>
+                                        <!-- Edit Button -->
+                                        <button class="btn btn-info btn-sm" onclick="editPelajaran({{ $item->id }})">Edit</button>
+
+                                        <!-- Delete Button -->
+                                        <form action="{{ route('admin.destroyPelajaran', $item->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm m-1" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- Pagination --}}
+                    {{ $data_pelajaran->withQueryString()->links() }}
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addPelajaranModal">
+                        Tambah Pelajaran
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Add Pelajaran -->
+<div class="modal fade" id="addPelajaranModal" tabindex="-1" aria-labelledby="addPelajaranModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPelajaranModalLabel">Tambah Pelajaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('admin.storePelajaran') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nama_pelajaran" class="form-label">Nama Pelajaran</label>
+                        <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="guru_id" class="form-label">Guru</label>
+                        <select class="form-control" id="guru_id" name="guru_id" required>
+                            <option value="" disabled selected>Pilih Guru</option>
+                            @foreach ($data_guru as $guru)
+                                <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Edit Pelajaran -->
+<div class="modal fade" id="editPelajaranModal" tabindex="-1" aria-labelledby="editPelajaranModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPelajaranModalLabel">Edit Pelajaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editPelajaranForm" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="edit_nama_pelajaran" class="form-label">Nama Pelajaran</label>
+                        <input type="text" class="form-control" id="edit_nama_pelajaran" name="nama_pelajaran" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_guru_id" class="form-label">Guru</label>
+                        <select class="form-control" id="edit_guru_id" name="guru_id" required>
+                            @foreach ($data_guru as $guru)
+                                <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Include jQuery and Bootstrap JS for Modal functionality -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Handle Edit Modal for Pelajaran
+    function editPelajaran(id) {
+        $.ajax({
+            url: '/pelajaran/' + id + '/edit',
+            method: 'GET',
+            success: function(response) {
+                $('#editPelajaranModal').modal('show'); // Tampilkan modal
+                $('#editPelajaranForm').attr('action', '/dash_admin/pelajaran/' + id); // Update action form
+                $('#edit_nama_pelajaran').val(response.nama_pelajaran); // Isi field nama_pelajaran
+                $('#edit_guru_id').val(response.guru_id); // Isi field guru_id
+            }
+        });
+    }
+</script>
 
 
                 {{-- DAFTAR GURU --}}

@@ -7,6 +7,7 @@ use App\Models\Pelajaran;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Siswa;
+use App\Models\Nilai;
 use App\Models\Guru;
 use App\Models\Teknisi;
 use Illuminate\Support\Facades\Hash;
@@ -37,12 +38,14 @@ class adminController extends Controller
     public function dash_admin(Request $request)
     {
         $data_siswa = Siswa::orderBy('id', 'desc')->paginate(5);
+        $data_nilai = Nilai::orderBy('id', 'desc')->paginate(5);
+        $data_pelajaran = Pelajaran::orderBy('id', 'desc')->paginate(5);
         $data_guru = Guru::orderBy('id', 'desc')->paginate(5);   // Data guru
         $data_admin = Admin::orderBy('id', 'desc')->paginate(10);
         $data_teknisi = Teknisi::orderBy('id', 'desc')->paginate(10);
 
 
-        return view('admin.dash_admin', compact('data_siswa', 'data_guru', 'data_admin', 'data_teknisi'));
+        return view('admin.dash_admin', compact('data_siswa', 'data_guru', 'data_admin', 'data_teknisi', 'data_nilai', 'data_pelajaran'));
     }
 
 
@@ -311,4 +314,95 @@ class adminController extends Controller
         return redirect()->route('admin.dash_admin')->with('success', 'Teknisi berhasil dihapus.');
     }
 
+    public function editNilai($id)
+    {
+        $nilai = Nilai::findOrFail($id);
+        return response()->json($nilai);
+    }
+
+    // Update Nilai
+    public function updateNilai(Request $request, $id)
+    {
+        $nilai = Nilai::findOrFail($id);
+
+        // Validasi input
+        $validated = $request->validate([
+            'siswa_id' => 'required|exists:siswa,id',
+            'pelajaran_id' => 'required|exists:pelajarans,id',
+            'nilai' => 'required|numeric|min:0|max:100',
+        ]);
+
+        // Update data nilai
+        $nilai->update($validated);
+
+        return redirect()->route('admin.dash_admin')->with('success', 'Nilai berhasil diperbarui.');
+    }
+
+    // Hapus Nilai
+    public function destroyNilai($id)
+    {
+        $nilai = Nilai::findOrFail($id);
+        $nilai->delete();
+
+        return redirect()->route('admin.dash_admin')->with('success', 'Nilai berhasil dihapus.');
+    }
+
+    // Simpan Nilai Baru
+    public function storeNilai(Request $request)
+    {
+        // Validasi input
+        $validated = $request->validate([
+            'siswa_id' => 'required|exists:siswa,id',
+            'pelajaran_id' => 'required|exists:pelajarans,id',
+            'nilai' => 'required|numeric|min:0|max:100',
+        ]);
+
+        // Simpan data nilai
+        Nilai::create($validated);
+
+        return redirect()->back()->with('success', 'Data nilai berhasil disimpan.');
+    }
+
+    public function editPelajaran($id)
+    {
+        $pelajaran = Pelajaran::findOrFail($id);
+        return response()->json($pelajaran); // Mengembalikan data dalam format JSON
+    }
+
+    // Update Pelajaran
+    public function updatePelajaran(Request $request, $id)
+    {
+        $pelajaran = Pelajaran::findOrFail($id);
+
+        $validated = $request->validate([
+            'nama_pelajaran' => 'required|string|max:255',
+            'guru_id' => 'required|exists:guru,id', // Validasi foreign key ke tabel 'gurus'
+        ]);
+
+        $pelajaran->update($validated);
+
+        return redirect()->route('admin.dash_admin')->with('success', 'Data pelajaran berhasil diperbarui.');
+    }
+
+    // Delete Pelajaran
+    public function destroyPelajaran($id)
+    {
+        $pelajaran = Pelajaran::findOrFail($id);
+        $pelajaran->delete();
+
+        return redirect()->route('admin.dash_admin')->with('success', 'Data pelajaran berhasil dihapus.');
+    }
+
+    // Store Pelajaran (Tambah Pelajaran)
+    public function storePelajaran(Request $request)
+    {
+        $validated = $request->validate([
+            'nama_pelajaran' => 'required|string|max:255',
+            'guru_id' => 'required|exists:guru,id', // Validasi foreign key ke tabel 'gurus'
+        ]);
+
+        Pelajaran::create($validated);
+
+        return redirect()->back()->with('success', 'Data pelajaran berhasil disimpan.');
+    }
 }

@@ -23,6 +23,7 @@ return new class extends Migration
             // Foreign Keys
             $table->foreign('pelajaran_id')->references('id')->on('pelajarans')->onDelete('cascade');
             $table->foreign('ruangan_id')->references('id')->on('ruangans')->onDelete('cascade');
+            
         });
     }
 

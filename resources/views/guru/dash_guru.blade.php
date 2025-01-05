@@ -1,296 +1,355 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Guru</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-        crossorigin="anonymous" />
-    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../vendor/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="../vendor/perfect-scrollbar/css/perfect-scrollbar.css">
+@push('css')
+    <!-- CSS for this page only -->
     <link rel="stylesheet" href="../vendor/chart.js/dist/Chart.min.css">
-    <link rel="stylesheet" href="../assets/css/style.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-override.min.css">
-    <link rel="stylesheet" id="theme-color" href="../assets/css/dark.min.css">
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<body>
-    <div id="app">
-        <div class="shadow-header"></div>
-        <header class="header-navbar fixed">
-            <div class="toggle-mobile action-toggle"><i class="fas fa-bars"></i></div>
-            <div class="header-wrapper">
-                <div class="header-left">
-                    <div class="theme-switch-icon"></div>
-                </div>
-                <div class="header-content">
-                    <div class="notification dropdown">
-                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-envelope"></i>
-                        </a>
-                        <ul class="dropdown-menu medium">
-                            <li class="menu-header">
-                                <a class="dropdown-item" href="#">Message</a>
-                            </li>
-                            <li class="menu-content ps-menu">
-                                <!-- Messages here -->
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="notification dropdown">
-                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-bell"></i>
-                            <span class="badge">12</span>
-                        </a>
-                        <ul class="dropdown-menu medium">
-                            <li class="menu-header">
-                                <a class="dropdown-item" href="#">Notification</a>
-                            </li>
-                            <li class="menu-content ps-menu">
-                                <!-- Notifications here -->
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="dropdown dropdown-menu-end">
-                        <a href="#" class="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="label">
-                                <span></span>
-                                <div>Akun</div>
-                            </div>
-                            <img class="img-user" src="../assets/images/avatar1.png" alt="user" srcset="">
-                        </a>
-                        <ul class="dropdown-menu small">
-                            <li class="menu-content ps-menu">
-                                <a href="#">
-                                    <div class="description"><i class="ti-user"></i> Kelola Akun</div>
-                                </a>
-                                <a href="#">
-                                    <div class="description"><i class="ti-power-off"></i> Logout</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <nav class="main-sidebar ps-menu">
-            <div class="sidebar-header">
-                <div class="text">SIMPA</div>
-                <div class="close-sidebar action-toggle">
-                    <i class="ti-close"></i>
-                </div>
-            </div>
-            <div class="sidebar-content">
-                <ul>
-                    <li class="active"><a href="coba.blade.php" class="link"><i class="ti-home"></i> Dashboard
-                            Guru</a></li>
-                    <li><a href="siswa" class="link"><i class="ti-desktop"></i> Data Siswa</a></li>
-                    <li><a href="#" class="link"><i class="ti-notepad"></i> Data Nilai</a></li>
-                    <li><a href="#" class="link"><i class="ti-layers-alt"></i> Jadwal Kelas</a></li>
-                    <li><a href="#" class="link"><i class="ti-book"></i> Materi</a></li>
-                    <li><a href="charts.html" class="link"><i class="ti-write"></i> Konsultasi</a></li>
-                </ul>
-            </div>
-        </nav>
-        <div class="main-content">
-            <div class="title">Dashboard</div>
-            <div class="content-wrapper">
-                <div class="row same-height">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Data Siswa</h3>
-                                <div class="pb-3">
-                                    <form class="d-flex" action="{{ url('siswa') }}" method="get">
-                                        <input class="form-control me-1" type="search" name="katakunci"
-                                            value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci"
-                                            aria-label="Search">
-                                        <button class="btn btn-secondary" type="submit">Cari</button>
-                                    </form>
-                                </div>
-                            </div>
+    <!-- End CSS  -->
+@endpush
 
-                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
+@section('content')
+    <div class="main-content">
+        {{-- tabel siswa --}}
+        <div class="content-wrapper">
+            <div class="row same-height">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Data Siswa</h3>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama</th>
+                                            <th>Gender</th>
+                                            <th>Nama Orang Tua</th>
+                                            <th>No. Tlp</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>Alamat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data_siswa as $item)
                                             <tr>
-                                                <th>NIK</th>
-                                                <th>Nama</th>
-                                                <th>Gender</th>
-                                                <th>Nama Orang Tua</th>
-                                                <th>No. Tlp</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th>Alamat</th>
+                                                <td>{{ $item->nik }}</td>
+                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ $item->gender }}</td>
+                                                <td>{{ $item->nama_orang_tua }}</td>
+                                                <td>{{ $item->nomor_telepon }}</td>
+                                                <td>{{ $item->tanggal_lahir }}</td>
+                                                <td>{{ $item->alamat }}</td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($data_siswa as $item)
-                                                <tr>
-                                                    <td>{{ $item->nik }}</td>
-                                                    <td>{{ $item->nama }}</td>
-                                                    <td>{{ $item->gender }}</td>
-                                                    <td>{{ $item->nama_orang_tua }}</td>
-                                                    <td>{{ $item->nomor_telepon }}</td>
-                                                    <td>{{ $item->tanggal_lahir }}</td>
-                                                    <td>{{ $item->alamat }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    {{ $data_siswa->withQueryString()->links() }}
-                                </div>
-
-
-                                <!-- Modal Tambah Data -->
-                                <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="tambahDataModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="tambahDataModalLabel">Tambah Data Siswa
-                                                </h5>
-                                                <button type="button" class="close" data-bs-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="tambahSiswaForm" method="post">
-                                                    {{ csrf_field() }}
-                                                    <div class="form-group">
-                                                        <label for="nik">NIK</label>
-                                                        <input type="text" class="for m-control" id="nik"
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="nama">Nama</label>
-                                                        <input type="text" class="form-control" id="nama"
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="gender">Gender</label>
-                                                        <select class="form-control" id="gender" required>
-                                                            <option value="">Pilih Gender</option>
-                                                            <option value="Laki-laki">Laki-laki</option>
-                                                            <option value="Perempuan">Perempuan</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="nama_orang_tua">Nama Orang Tua</label>
-                                                        <input type="text" class="form-control"
-                                                            id="nama_orang_tua" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="no_tlp">No. Telepon</label>
-                                                        <input type="text" class="form-control" id="no_tlp"
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="tanggal_lahir">Tanggal Lahir</label>
-                                                        <input type="date" class="form-control" id="tanggal_lahir"
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="alamat">Alamat</label>
-                                                        <textarea class="form-control" id="alamat" required></textarea>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Tutup</button>
-                                                <button type="button" class="btn btn-primary"
-                                                    id="simpanDataButton">Simpan Data</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{ $data_siswa->withQueryString()->links() }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="settings">
-                <div class="settings-icon-wrapper">
-                    <div class="settings-icon">
-                        <i class="ti ti-settings"></i>
+        </div>
+
+        {{-- tabel nilai --}}
+        {{-- Tabel Nilai --}}
+        <div class="content-wrapper">
+            <div class="row same-height">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Data Nilai</h3>
+                            <div class="container">
+                                <div class="card">
+                                    <div class="container">
+                                        <h2 class="mt-3">Grafik Nilai Rata-Rata</h2>
+                                        <canvas id="nilaiChart" width="400" height="200"></canvas>
+                                        <script>
+                                            // Ambil averageNilai dari backend
+                                            const averageData = @json($averageNilai);
+                                        
+                                            // Proses data untuk grafik
+                                            const labels = averageData.map(item => item.pelajaran.nama_pelajaran); // Nama pelajaran
+                                            const averages = averageData.map(item => item.average_nilai); // Nilai rata-rata
+                                        
+                                            // Inisialisasi Chart.js
+                                            const ctx = document.getElementById('nilaiChart').getContext('2d');
+                                            new Chart(ctx, {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: labels, // X-axis: Nama pelajaran
+                                                    datasets: [{
+                                                        label: 'Rata-Rata Nilai',
+                                                        data: averages, // Y-axis: Nilai rata-rata
+                                                        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Warna batang
+                                                        borderColor: 'rgba(54, 162, 235, 1)', // Warna border
+                                                        borderWidth: 1
+                                                    }]
+                                                },
+                                                options: {
+                                                    responsive: true,
+                                                    scales: {
+                                                        y: {
+                                                            beginAtZero: true // Sumbu Y mulai dari 0
+                                                        }
+                                                    },
+                                                    plugins: {
+                                                        tooltip: {
+                                                            callbacks: {
+                                                                // Menampilkan nama pelajaran dan rata-rata nilai pada tooltip
+                                                                title: (tooltipItems) => {
+                                                                    const index = tooltipItems[0].dataIndex;
+                                                                    return Pelajaran: ${labels[index]};
+                                                                },
+                                                                label: (tooltipItem) => {
+                                                                    return Rata-rata: ${tooltipItem.raw.toFixed(2)};
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        </script>
+                                        
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <!-- Button to Open the Modal -->
+                            <div class="container"></div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#tambahNilaiModal">
+                                Tambah Nilai
+                            </button>
+                            @if (session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama Siswa</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>Nilai</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data_nilai as $item)
+                                            <tr>
+                                                <td>{{ $item->siswa->nama }}</td>
+                                                <td>{{ $item->pelajaran->nama_pelajaran }}</td>
+                                                <td>{{ $item->nilai }}</td>
+
+                                                <td>
+                                                    <button class="btn btn-warning" data-toggle="modal"
+                                                        data-target="#editNilaiModal{{ $item->id }}">
+                                                        Edit
+                                                    </button>
+                                                    <form
+                                                        action="{{ route('nilai.destroy', ['siswa_id' => $item->siswa_id, 'pelajaran_id' => $item->pelajaran_id]) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <!-- Menggunakan metode DELETE untuk penghapusan -->
+                                                        <button type="submit" class="btn btn-danger"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus nilai ini?')">Hapus</button>
+                                                    </form>
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{ $data_nilai->withQueryString()->links() }}
+                            </div>
+
+                            {{-- modal tambah --}}
+                            <!-- The Modal -->
+                            <div class="modal fade" id="tambahNilaiModal" tabindex="-1"
+                                aria-labelledby="tambahNilaiModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="tambahNilaiModalLabel">Tambah Nilai</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('guru.store_nilai') }}" method="POST">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="siswa_id">Siswa</label>
+                                                    <select name="siswa_id" id="siswa_id" class="form-control" required>
+                                                        <option value="">Pilih Siswa</option>
+                                                        @foreach ($data_nilai as $item)
+                                                            <option value="{{ $item->siswa->id }}">
+                                                                {{ $item->siswa->nama }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pelajaran_id">Pelajaran</label>
+                                                    <select name="pelajaran_id" id="pelajaran_id" class="form-control"
+                                                        required>
+                                                        <option value="">Pilih Pelajaran</option>
+                                                        @foreach ($data_nilai as $item)
+                                                            <option value="{{ $item->pelajaran->id }}">
+                                                                {{ $item->pelajaran->nama_pelajaran }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nilai">Nilai</label>
+                                                    <input type="number" name="nilai" id="nilai" class="form-control"
+                                                        required>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan Nilai</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Modal Edit Nilai -->
+                            @foreach ($data_nilai as $item)
+                                <div class="modal fade" id="editNilaiModal{{ $item->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="editNilaiModalLabel{{ $item->id }}"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editNilaiModalLabel{{ $item->id }}">Edit
+                                                    Nilai
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('nilai.update', $item->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT') <!-- Menggunakan metode PUT untuk update -->
+
+                                                    <div class="form-group">
+                                                        <label for="siswa_id">Siswa</label>
+                                                        <select name="siswa_id" id="siswa_id" class="form-control"
+                                                            required>
+                                                            <option value="">Pilih Siswa</option>
+                                                            @foreach ($data_nilai as $item)
+                                                                <option value="{{ $item->siswa->id }}"
+                                                                    {{ $item->siswa->id == $item->siswa_id ? 'selected' : '' }}>
+                                                                    {{ $item->siswa->nama }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="pelajaran_id">Pelajaran</label>
+                                                        <select name="pelajaran_id" id="pelajaran_id"
+                                                            class="form-control" required>
+                                                            <option value="">Pilih Pelajaran</option>
+                                                            @foreach ($data_nilai as $item)
+                                                                <option value="{{ $item->pelajaran->id }}"
+                                                                    {{ $item->pelajaran->id == $item->pelajaran_id ? 'selected' : '' }}>
+                                                                    {{ $item->pelajaran->nama_pelajaran }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="nilai">Nilai</label>
+                                                        <input type="number" name="nilai" id="nilai"
+                                                            class="form-control" value="{{ $item->nilai }}" required>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <a href="{{ route('guru.dash_guru') }}"
+                                                            class="btn btn-secondary">Kembali</a>
+                                                        <button type="submit" class="btn btn-primary">Perbarui
+                                                            Nilai</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+
+                        </div>
+
+
+
+
+
                     </div>
                 </div>
-                <div class="settings-content">
-                    <ul>
-                        <li class="fix-header">
-                            <div class="fix-header-wrapper">
-                                <div class="form-check form-switch lg">
-                                    <label class="form-check-label" for="settingsFixHeader">Fixed Header</label>
-                                    <input class="form-check-input toggle-settings" name="Header" type="checkbox"
-                                        id="settingsFixHeader">
-                                </div>
-
-                            </div>
-                        </li>
-                        <li class="fix-footer">
-                            <div class="fix-footer-wrapper">
-                                <div class="form-check form-switch lg">
-                                    <label class="form-check-label" for="settingsFixFooter">Fixed Footer</label>
-                                    <input class="form-check-input toggle-settings" name="Footer" type="checkbox"
-                                        id="settingsFixFooter">
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="theme-switch">
-                                <label for="">Theme Color</label>
-                                <div>
-                                    <div class="form-check form-check-inline lg">
-                                        <input class="form-check-input lg theme-color" type="radio"
-                                            name="ThemeColor" id="light" value="light">
-                                        <label class="form-check-label" for="light">Light</label>
-                                    </div>
-                                    <div class="form-check form-check-inline lg">
-                                        <input class="form-check-input lg theme-color" type="radio"
-                                            name="ThemeColor" id="dark" value="dark">
-                                        <label class="form-check-label" for="dark">Dark</label>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="fix-footer-wrapper">
-                                <div class="form-check form-switch lg">
-                                    <label class="form-check-label" for="settingsFixFooter">Collapse Sidebar</label>
-                                    <input class="form-check-input toggle-settings" name="Sidebar" type="checkbox"
-                                        id="settingsFixFooter">
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <footer>
-                <span>SIMPA 2025</span>
-            </footer>
-            <div class="overlay action-toggle">
             </div>
         </div>
-        <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="../vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-        <!-- js for this page only -->
-        <script src="../vendor/chart.js/dist/Chart.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <script src="../assets/js/page/index.js"></script>
-        <!-- ======= -->
-        <script src="../assets/js/main.js"></script>
-        <script>
-            Main.init()
-        </script>
-</body>
+        <!-- jQuery and Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-</html>
+        {{-- item Kehadiran --}}
+        <div class="content-wrapper">
+            <div class="row same-height">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Jadwal Pelajaran</h3>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Pelajaran</th>
+                                            <th>Ruangan</th>
+                                            <th>Tanggal</th>
+                                            <th>Jam Mulai</th>
+                                            <th>Jam Selesai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($jadwals as $item)
+                                        <tr>
+                                            <td>{{ $item->pelajaran->nama_pelajaran }}</td> <!-- Assuming 'nama' is the column in 'pelajarans' table -->
+                                            <td>{{ $item->ruangan->nama_ruangan }}</td> <!-- Assuming 'nama_ruangan' is the column in 'ruangans' table -->
+                                            <td>{{ $item->tanggal }}</td>
+                                            <td>{{ $item->jam_mulai }}</td>
+                                            <td>{{ $item->jam_selesai }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{ $jadwals->withQueryString()->links() }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endsection

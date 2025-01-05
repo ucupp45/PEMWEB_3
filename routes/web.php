@@ -6,6 +6,8 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\ortuController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TeknisiController;
+
+
 use App\Http\Controllers\siswaController;
 use App\Exports\GuruExport;
 use App\Exports\AdminExport;
@@ -66,6 +68,15 @@ Route::post('/dash_admin/siswa', [adminController::class, 'storeSiswa'])->name('
 Route::get('/siswa/{id}/edit', [adminController::class, 'editSiswa']);
 Route::put('/dash_admin/siswa/{id}', [adminController::class, 'updateSiswa']);
 Route::delete('/dash_admin/siswa/{id}', [adminController::class, 'destroySiswa'])->name('admin.destroySiswa');
+Route::post('/dash_admin/nilai', [adminController::class, 'storeNilai'])->name('admin.storeNilai');
+Route::get('/nilai/{id}/edit', [adminController::class, 'editNilai']);
+Route::put('/dash_admin/nilai/{id}', [adminController::class, 'updateNilai']);
+Route::delete('/dash_admin/nilai/{id}', [adminController::class, 'destroyNilai'])->name('admin.destroyNilai');
+Route::post('/dash_admin/pelajaran', [adminController::class, 'storePelajaran'])->name('admin.storePelajaran');
+Route::get('/pelajaran/{id}/edit', [adminController::class, 'editPelajaran']);
+Route::put('/dash_admin/pelajaran/{id}', [adminController::class, 'updatePelajaran']);
+Route::delete('/dash_admin/pelajaran/{id}', [adminController::class, 'destroyPelajaran'])->name('admin.destroyPelajaran');
+
 // Route untuk mengelola Guru
 Route::post('/dash_admin/storeGuru', [adminController::class, 'storeGuru'])->name('admin.storeGuru');
 Route::get('/dash_admin/guru/{id}/edit', [adminController::class, 'editGuru'])->name('admin.editGuru');
@@ -122,3 +133,19 @@ Route::post('/dash_teknisi/storeRuangan', [RuanganController::class, 'store'])->
 Route::get('/dash_teknisi/{id}/edit', [RuanganController::class, 'edit'])->name('ruangan.edit');
 Route::put('/dash_teknisi/{id}', [RuanganController::class, 'update'])->name('ruangan.update');
 Route::delete('/dash_teknisi/{id}', [RuanganController::class, 'destroy'])->name('ruangan.destroy');
+
+
+Route::resource('nilais', GuruController::class);
+
+// Rute khusus untuk menghapus nilai
+Route::delete('nilais/{id}', [GuruController::class, 'destroy_nilai'])->name('nilais.destroy');
+// Route untuk menampilkan form edit nilai
+Route::get('/nilai/{id}/edit', [GuruController::class, 'edit_nilai'])->name('nilai.edit');
+
+// Route untuk memperbarui nilai
+Route::put('/nilai/{id}', [GuruController::class, 'update_nilai'])->name('nilai.update');
+Route::delete('/nilai/{siswa_id}/{pelajaran_id}', [GuruController::class, 'destroy'])->name('nilai.destroy');
+
+Route::get('/dash-guru', [GuruController::class, 'grafikNilai'])->name('guru.dash_guru');
+
+Route::post('/store_nilai', [GuruController::class, 'store_nilai'])->name('guru.store_nilai'); // Untuk menyimpan data
