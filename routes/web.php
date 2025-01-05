@@ -96,4 +96,5 @@ Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('tekn
 // Menampilkan data siswa 
 // Route::resource('siswa', [siswaController::class,'index']);
 
+Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 
