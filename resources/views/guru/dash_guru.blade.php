@@ -51,160 +51,202 @@
         </div>
 
         {{-- tabel nilai --}}
+        {{-- Tabel Nilai --}}
         <div class="content-wrapper">
             <div class="row same-height">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <h3>Data Nilai</h3>
+                            <!-- Button to Open the Modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#tambahNilaiModal">
+                                Tambah Nilai
+                            </button>
+                            
+
+                            @if (session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
-                                            <th>Mata Pelajaran</th>
-                                            <th>NIlai</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{-- @foreach ($data_nilai as $item)
-                                            <tr>
-                                                <td>{{ $item->siswa_id }}</td>
-                                                <td>{{ $item->pelajaran_id }}</td>
-                                                <td>{{ $item->nilai }}</td>
-                                            </tr>
-                                        @endforeach --}}
-                                    </tbody>
-                                </table>
-                                {{ $data_siswa->withQueryString()->links() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Input Nilai --}}
-        <div class="content-wrapper">
-            <div class="row same-height">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Input Penilaian</h3>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered mt-4">
-                                        <thead class="table-primary">
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama Siswa</th>
-                                                <th>Nilai</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>ALVIN NUR ALABAL</td>
-                                                <td><input type="number" class="form-control" value="90"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>AMALIA</td>
-                                                <td><input type="number" class="form-control" value="92"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>ANANDA LESTARI</td>
-                                                <td><input type="number" class="form-control" value="85"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>DENI NUR ADRIAN</td>
-                                                <td><input type="number" class="form-control" value="88"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>ERA NUR AIDARAH</td>
-                                                <td><input type="number" class="form-control" value="91"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <div class="text-end mt-4">
-                                        <button class="btn btn-primary">Simpan</button>
-                                    </div>
-                                </div>
-                                <br>{{ $data_siswa->withQueryString()->links() }}
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Nilai Akhir --}}
-        <div class="content-wrapper">
-            <div class="row same-height">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Nilai Akhir</h3>
-                            <!-- Tombol untuk menambah siswa baru -->
-                            {{-- <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Siswa</a> --}}
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered mt-4">
-                                    <thead class="table-header">
-                                        <tr>
-                                            <th>No</th>
                                             <th>Nama Siswa</th>
-                                            <th>KKM</th>
-                                            <th>Penghayatan</th>
-                                            <th>Keterampilan</th>
+                                            <th>Mata Pelajaran</th>
                                             <th>Nilai</th>
-                                            <th>Predikat</th>
-                                            <th>Aksi</th> <!-- Kolom untuk tombol aksi -->
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($data_siswa as $siswa)
-                                            <!-- Melakukan iterasi untuk setiap siswa -->
+                                        @foreach ($data_nilai as $item)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td> <!-- Menampilkan nomor urut -->
-                                                <td>{{ $siswa->nama }}</td> <!-- Menampilkan nama siswa -->
-                                                <td>{{ $siswa->kkm }}</td> <!-- Menampilkan KKM -->
-                                                <td>{{ $siswa->penghayatan }}</td> <!-- Menampilkan penghayatan -->
-                                                <td>{{ $siswa->keterampilan }}</td> <!-- Menampilkan keterampilan -->
-                                                <td>{{ $siswa->nilai }}</td> <!-- Menampilkan nilai -->
-                                                <td>{{ $siswa->predikat }}</td> <!-- Menampilkan predikat -->
+                                                <td>{{ $item->siswa->nama }}</td>
+                                                <td>{{ $item->pelajaran->nama_pelajaran }}</td>
+                                                <td>{{ $item->nilai }}</td>
+
                                                 <td>
-                                                    <!-- Tombol untuk mengedit data siswa -->
-                                                    <a href="{{ route('siswa.edit', $siswa->id) }}"
-                                                        class="btn btn-warning">Edit</a>
-                                                    <!-- Form untuk menghapus data siswa -->
-                                                    <form action="{{ route('siswa.destroy', $siswa->id) }}" method="POST"
-                                                        style="display:inline;">
-                                                        @csrf <!-- Token CSRF untuk keamanan -->
-                                                        @method('DELETE') <!-- Menentukan metode DELETE -->
-                                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                                        <!-- Tombol hapus -->
+                                                    <button class="btn btn-warning" data-toggle="modal"
+                                                        data-target="#editNilaiModal{{ $item->id }}">
+                                                        Edit
+                                                    </button>
+                                                    <form action="{{ route('nilai.destroy', ['siswa_id' => $item->siswa_id, 'pelajaran_id' => $item->pelajaran_id]) }}" method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE') <!-- Menggunakan metode DELETE untuk penghapusan -->
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus nilai ini?')">Hapus Nilai</button>
                                                     </form>
                                                 </td>
+
+
                                             </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                <!-- Untuk pagination -->
-                                {{ $data_siswa->links() }}
-
+                                {{ $data_nilai->withQueryString()->links() }}
                             </div>
+
+                            {{-- modal tambah --}}
+                            <!-- The Modal -->
+                            <div class="modal fade" id="tambahNilaiModal" tabindex="-1"
+                                aria-labelledby="tambahNilaiModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="tambahNilaiModalLabel">Tambah Nilai</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('guru.store_nilai') }}" method="POST">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="siswa_id">Siswa</label>
+                                                    <select name="siswa_id" id="siswa_id" class="form-control" required>
+                                                        <option value="">Pilih Siswa</option>
+                                                        @foreach ($data_nilai as $item)
+                                                            <option value="{{ $item->siswa->id }}">
+                                                                {{ $item->siswa->nama }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pelajaran_id">Pelajaran</label>
+                                                    <select name="pelajaran_id" id="pelajaran_id" class="form-control"
+                                                        required>
+                                                        <option value="">Pilih Pelajaran</option>
+                                                        @foreach ($data_nilai as $item)
+                                                            <option value="{{ $item->pelajaran->id }}">
+                                                                {{ $item->pelajaran->nama_pelajaran }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nilai">Nilai</label>
+                                                    <input type="number" name="nilai" id="nilai" class="form-control"
+                                                        required>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan Nilai</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Modal Edit Nilai -->
+                            @foreach ($data_nilai as $item)
+                                <div class="modal fade" id="editNilaiModal{{ $item->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="editNilaiModalLabel{{ $item->id }}"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editNilaiModalLabel{{ $item->id }}">Edit
+                                                    Nilai
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('nilai.update', $item->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT') <!-- Menggunakan metode PUT untuk update -->
+
+                                                    <div class="form-group">
+                                                        <label for="siswa_id">Siswa</label>
+                                                        <select name="siswa_id" id="siswa_id" class="form-control"
+                                                            required>
+                                                            <option value="">Pilih Siswa</option>
+                                                            @foreach ($data_nilai as $item)
+                                                                <option value="{{ $item->siswa->id }}"
+                                                                    {{ $item->siswa->id == $item->siswa_id ? 'selected' : '' }}>
+                                                                    {{ $item->siswa->nama }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="pelajaran_id">Pelajaran</label>
+                                                        <select name="pelajaran_id" id="pelajaran_id"
+                                                            class="form-control" required>
+                                                            <option value="">Pilih Pelajaran</option>
+                                                            @foreach ($data_nilai as $item)
+                                                                <option value="{{ $item->pelajaran->id }}"
+                                                                    {{ $item->pelajaran->id == $item->pelajaran_id ? 'selected' : '' }}>
+                                                                    {{ $item->pelajaran->nama_pelajaran }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="nilai">Nilai</label>
+                                                        <input type="number" name="nilai" id="nilai"
+                                                            class="form-control" value="{{ $item->nilai }}" required>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <a href="{{ route('guru.dash_guru') }}"
+                                                            class="btn btn-secondary">Kembali</a>
+                                                        <button type="submit" class="btn btn-primary">Perbarui
+                                                            Nilai</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+
                         </div>
+
+
+
+
+
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- jQuery and Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         {{-- Jadwal Kehadiran --}}
         <div class="content-wrapper">
@@ -256,53 +298,5 @@
                 </div>
             </div>
         </div>
-
-
-        {{-- Kehadiran --}}
-        <div class="content-wrapper">
-            <div class="row same-height">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Kehadiran Siswa</h3>
-                            <a href="3" class="btn btn-primary">Tambah Kehadiran</a>
-                            <a href="#" class="btn btn-secondary">Laporan Kehadiran</a>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered mt-4">
-                                    <thead class="table-primary">
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Siswa</th>
-                                            <th>Mata Pelajaran</th>
-                                            <th>Status Kehadiran</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{-- @foreach ($data_kehadiran as $kehadiran)
-                                          <tr>
-                                              <td>{{ $loop->iteration }}</td>
-                                              <td>{{ $kehadiran->siswa->nama }}</td>
-                                              <td>{{ $kehadiran->mapel->nama }}</td>
-                                              <td>{{ $kehadiran->hadir ? 'Hadir' : 'Tidak Hadir' }}</td>
-                                              <td>
-                                                  <form action="{{ route('kehadiran.destroy', $kehadiran->id) }}" method="POST" style="display:inline;">
-                                                      @csrf
-                                                      @method('DELETE')
-                                                      <button type="submit" class="btn btn-danger">Hapus</button>
-                                                  </form>
-                                              </td>
-                                          </tr> --}}
-                                        {{-- @endforeach --}}
-                                    </tbody>
-                                </table>
-                                {{ $data_siswa->links() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     @endsection
