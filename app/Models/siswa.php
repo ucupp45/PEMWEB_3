@@ -23,9 +23,13 @@ class Siswa extends Model
     ];
 
       // Relasi dengan Nilai
-      public function nilai()
-      {
-          return $this->hasMany(Nilai::class);
-      }
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class, 'siswa_id');
+    }
     
+    public function Jadwal()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
 }

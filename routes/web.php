@@ -114,6 +114,7 @@ Route::get('/export-teknisi', function () {
 // Menampilkan data siswa 
 // Route::resource('siswa', [siswaController::class,'index']);
 
+
 Route::get('/dash_teknisi', [RuanganController::class, 'dash_teknisi'])->name('teknisi.dash_teknisi');
 
 // Routes for CRUD operations on Ruangan

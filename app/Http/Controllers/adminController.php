@@ -139,7 +139,7 @@ class adminController extends Controller
             'alamat' => 'required|string',
             'password' => 'required|string|min:8',
         ]);
-
+        
         // Enkripsi password
         $validated['password'] = Hash::make($validated['password']);
 
