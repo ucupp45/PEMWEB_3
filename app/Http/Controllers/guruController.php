@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Siswa;
+use App\Models\Konsultasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,9 +20,8 @@ class GuruController extends Controller
 
     }
 
-<<<<<<< HEAD
-    #menampilkan data siswa
-=======
+// <<<<<<< HEAD
+
     public function showAdminDashboard()
     {
         // Ambil semua data guru
@@ -30,7 +30,7 @@ class GuruController extends Controller
         // Kirim data ke view 'admin.dash_admin'
         return view('admin.dash_admin', compact('gurus'));
     }
->>>>>>> 163b2b1d2e2efffc1a5590c96a6314a56712d4e7
+// >>>>>>> 163b2b1d2e2efffc1a5590c96a6314a56712d4e7
     public function dash_guru()
     {
         $data_siswa = Siswa::orderBy('id','desc')->paginate(5);
@@ -87,7 +87,26 @@ class GuruController extends Controller
         // If login fails
         return back()->withErrors(['login' => 'NUPTK atau Password salah.']);
     }
+        public function dashGuru()
+    {
+        
+        // Data konsultasi (contoh)
+        $konsultasi = [
+            (object)[
+                'nama' => 'John Doe',
+                'email' => 'johndoe@example.com',
+                'pertanyaan' => 'Bagaimana cara meningkatkan fokus belajar?',
+                'created_at' => '2025-01-01',
+            ],
+            (object)[
+                'nama' => 'Jane Smith',
+                'email' => 'janesmith@example.com',
+                'pertanyaan' => 'Apakah ada tips untuk menghadapi ujian?',
+                'created_at' => '2025-01-02',
+            ],
+        ];
 
-
+        return view('guru.dash_guru', compact('konsultasi'));
+    }
 
 }

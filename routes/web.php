@@ -8,6 +8,7 @@ use App\Http\Controllers\TeknisiController;
 
 
 
+
 // Rute untuk login dan registrasi
 
 Route::get('/ortu', [ortuController::class, 'index']);
@@ -92,4 +93,9 @@ Route::post('/logout/teknisi', [TeknisiController::class, 'logout'])->name('tekn
 // Menampilkan data siswa 
 // Route::resource('siswa', [siswaController::class,'index']);
 
+//untuk konsultasi
+//Route::resource('konsultasi', KonsultasiController::class);
 
+
+
+Route::get('/guru/dash_guru', [GuruController::class, 'dashGuru'])->name('guru.dash_guru');

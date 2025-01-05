@@ -284,3 +284,40 @@
           </div>
       </div>
     @endsection
+      {{-- Bagian Konsultasi --}}
+      <div class="content-wrapper">
+        <div class="row same-height">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Data Konsultasi</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Pertanyaan</th>
+                                        <th>Tanggal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($konsultasi as $konsul)
+                                        <tr>
+                                            <td>{{ $konsul->nama }}</td>
+                                            <td>{{ $konsul->email }}</td>
+                                            <td>{{ $konsul->pertanyaan }}</td>
+                                            <td>{{ $konsul->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
