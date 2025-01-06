@@ -46,7 +46,6 @@ Route::get('/regggg', function () {
 
 Route::get('/guru', [GuruController::class, 'index']);
 Route::get('/dash_guru', [GuruController::class, 'dash_guru'])->name('guru.dash_guru'); // Untuk menampilkan halaman
-Route::post('/store_nilai', [GuruController::class, 'store_nilai'])->name('guru.store_nilai'); // Untuk menyimpan data
 Route::post('/guru/store', [GuruController::class, 'store']);
 Route::get('/login', [GuruController::class, 'showLoginForm'])->name('guru.login');
 Route::post('/login/guru', [GuruController::class, 'login'])->name('guru.login.submit');
@@ -107,6 +106,6 @@ Route::get('/nilai/{id}/edit', [GuruController::class, 'edit_nilai'])->name('nil
 // Route untuk memperbarui nilai
 Route::put('/nilai/{id}', [GuruController::class, 'update_nilai'])->name('nilai.update');
 Route::delete('/nilai/{siswa_id}/{pelajaran_id}', [GuruController::class, 'destroy'])->name('nilai.destroy');
-
-Route::get('/dash-guru', [GuruController::class, 'grafikNilai'])->name('guru.dash_guru');
+Route::post('/store_nilai', [GuruController::class, 'store_nilai'])->name('guru.store_nilai'); // Untuk menyimpan data
+Route::get('/dash-guru', [GuruController::class, 'dash_guru'])->name('guru.dash_guru');
 

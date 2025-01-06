@@ -320,7 +320,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Data Siswa</h3>
+                            <h3>Jadwal Pelajaran</h3>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered">
