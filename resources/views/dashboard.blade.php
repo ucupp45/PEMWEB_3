@@ -24,7 +24,7 @@
                                 <td class="border px-4 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                     Porro, et?</td>
                                 <td class="border px-4 py-2">
-                                    @if (auth()->user()->HasRole('siswa') || auth()->user()->HasRole('admin'))
+                                    @if (auth()->user()->HasRole('siswa') || auth()->user()->HasRole('admin') || auth()->user()->HasRole('guru'))
                                         <button type="submit"
                                             class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-wides">Lihat
                                         </button>
