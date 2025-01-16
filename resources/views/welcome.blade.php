@@ -904,7 +904,7 @@
                                     </div> --}}
                                     <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Konsultasi Bersama Guru</h2>
                                     <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Fasilitasi komunikasi antara orang tua dan guru melalui fitur konsultasi. Diskusikan perkembangan anak secara langsung dan dapatkan saran terbaik dari guru.
+                                        Fasilitasi komunikasi antara orang tua dan guru melalui fitur konsultasi. Diskusikan perkembangan anak secara langsung dan dapatkan saran terbaik dari guru bersangkutan.
                                     </p>
                                 </div>
                             </a>
