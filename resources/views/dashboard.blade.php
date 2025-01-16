@@ -234,7 +234,6 @@
                                     <button type="button" class="btn btn-primary" id="searchButton">Search</button>
                                 </div>
                             </form>
-
                             <!-- Modal for Search Results -->
                             <div class="modal fade" id="searchResultsModal" tabindex="-1"
                                 aria-labelledby="searchResultsLabel" aria-hidden="true">
@@ -1567,7 +1566,7 @@
                     </div>
                 </div>
             @endif
-            
+
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
                 {{-- Konsultasi --}}
                 <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
