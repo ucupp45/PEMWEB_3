@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SiswaExportMail;
 use App\Models\siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exports\SiswaExport;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
@@ -88,6 +90,19 @@ class SiswaController extends Controller
     public function export()
     {
         return Excel::download(new SiswaExport, 'data_siswa.xlsx');
+    }
+
+    public function sendExcel(Request $request)
+    {
+        // Validasi email
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        // Kirim email dengan lampiran file Excel
+        Mail::to($request->email)->send(new SiswaExportMail());
+
+        return back()->with('success', 'Email dengan file Excel telah dikirim!');
     }
 
 }
