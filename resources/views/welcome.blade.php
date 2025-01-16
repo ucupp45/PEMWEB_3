@@ -892,7 +892,7 @@
                                     </div> --}}
                                     <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Monitoring Kesehatan Siswa</h2>
                                     <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Pastikan kesehatan siswa selalu terpantau dengan baik melalui laporan kesehatan, data imunisasi, dan catatan medis lainnya yang terintegrasi dalam aplikasi.
+                                        Pastikan kesehatan siswa selalu terpantau dengan baik melalui laporan kesehatan, data imunisasi, dan catatan medis lainnya yang terintegrasi dalam aplikasi ini.
                                     </p>
                                 </div>
                             </a>
