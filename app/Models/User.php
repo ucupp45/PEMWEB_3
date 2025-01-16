@@ -43,4 +43,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // One-to-One Relationship with Siswa (Student)
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class);
+    }
+
+    // One-to-One Relationship with Guru (Teacher)
+    public function guru()
+    {
+        return $this->hasOne(Guru::class);
+    }
+
+
 }

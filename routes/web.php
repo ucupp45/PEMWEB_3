@@ -1,8 +1,25 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\KesehatanController;
+use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\KonsultasController;
 
+use App\Exports\SiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+// Route::get('/export-siswa', function () {
+//     return Excel::download(new SiswaExport, 'data_siswa.xlsx');
+// });
+
+Route::get('/export-siswa', [SiswaController::class, 'export'])->name('siswa.export');
+Route::get('/export-guru', [GuruController::class, 'export'])->name('guru.export');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +35,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,6 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
+Route::resource('siswa', SiswaController::class);
+Route::resource('guru', GuruController::class);
+Route::resource('pelajaran', PelajaranController::class);
+Route::resource('nilai', NilaiController::class);
+Route::resource('jadwal', JadwalController::class);
+Route::resource('kesehatan', KesehatanController::class);
+Route::resource('konsultasi', KonsultasController::class);
 require __DIR__.'/auth.php';
