@@ -273,7 +273,7 @@
                             <thead>
                                 <tr>
                                     <th>User ID</th>
-                                    <th>Nama</th>
+                                    <th>Nama Siswa</th>
                                     <th>Alamat</th>
                                     <th>Gender</th>
                                     <th>Nama Orang Tua</th>
