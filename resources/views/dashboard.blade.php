@@ -139,7 +139,7 @@
 
             @if (auth()->user()->hasRole('siswa'))
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3 text-center">
                             <h1 style="font-size: 200%">Grafik Kesehatan Siswa</h1>
                         </div>
@@ -175,7 +175,7 @@
 
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru'))
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3 text-center">
                             <h1 style="font-size: 200%">Grafik Kesehatan Siswa</h1>
                         </div>
@@ -221,7 +221,7 @@
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
                 {{-- SISWA --}}
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-3">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3">
                             <h1 style="font-size: 200%">Data Siswa</h1>
                         </div>
@@ -229,11 +229,11 @@
                             <!-- Search Bar -->
                             <form id="searchForm" method="GET" class="mb-4">
                                 <div class="input-group">
-                                    <input type="text" id="searchInput" name="search" class="form-control" placeholder="Cari siswa..." autocomplete="off">
+                                    <input type="text" id="searchInput" name="search" class="form-control"
+                                        placeholder="Cari siswa..." autocomplete="off">
                                     <button type="button" class="btn btn-primary" id="searchButton">Search</button>
                                 </div>
                             </form>
-
                             <!-- Modal for Search Results -->
                             <div class="modal fade" id="searchResultsModal" tabindex="-1"
                                 aria-labelledby="searchResultsLabel" aria-hidden="true">
@@ -390,6 +390,16 @@
                                 data-bs-target="#addSiswaModal">Tambah Siswa</button>
                             <a href="{{ route('siswa.export') }}" class="btn btn-success mb-3">Export Data Siswa</a>
                         @endif
+                        {{-- @if (auth()->user()->hasRole('admin'))
+                            <form action="{{ route('siswa.sendExcel') }}" method="POST" class="mb-3">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="Masukkan email untuk mengirim file Excel" required>
+                                    <button type="submit" class="btn btn-primary">Kirim Email</button>
+                                </div>
+                            </form>
+                        @endif --}}
 
                         <!-- Modal Tambah Siswa -->
                         <div class="modal fade" id="addSiswaModal" tabindex="-1"
@@ -455,7 +465,7 @@
             @if (auth()->user()->hasRole('admin'))
                 {{-- GURU --}}
                 <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3">
                             <h1 style="font-size: 200%">Data Guru</h1>
                         </div>
@@ -646,7 +656,7 @@
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
                 {{-- Pelajaran --}}
                 <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3">
                             <h1 style="font-size: 200%">Data Pelajaran</h1>
                         </div>
@@ -809,7 +819,7 @@
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
                 {{-- Nilai --}}
                 <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3">
                             <h1 style="font-size: 200%">Data Nilai</h1>
                         </div>
@@ -994,7 +1004,7 @@
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
                 {{-- Jadwal --}}
                 <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3">
                             <h1 style="font-size: 200%">Jadwal</h1>
                         </div>
@@ -1182,7 +1192,7 @@
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
                 {{-- Kesehatan --}}
                 <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3">
                             <h1 style="font-size: 200%">Data Kesehatan</h1>
                         </div>
@@ -1364,7 +1374,7 @@
             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
                 {{-- Konsultasi --}}
                 <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="container mt-5 mb-3">
+                    <div class="container mt-5 mb-3 p-3">
                         <div class="mb-3">
                             <h1 style="font-size: 200%">Konsultasi</h1>
                         </div>
@@ -1556,7 +1566,89 @@
                     </div>
                 </div>
             @endif
+
+            @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('guru') || auth()->user()->hasRole('siswa'))
+                {{-- Konsultasi --}}
+                <div class="mt-3 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="container mt-5 mb-3 p-3">
+                        <div class="mb-3">
+                            <h1 style="font-size: 200%">Upload File</h1>
+                        </div>
+                        <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <label for="file">Choose file:</label>
+                            <input type="file" name="file" id="file" required>
+                            <button type="submit">Upload</button>
+                        </form>
+                        @if (session('success'))
+                            <p>{{ session('success') }}</p>
+                            <p>File Path: {{ session('path') }}</p>
+                        @endif
+                    </div>
+                </div>
+            @endif
         </div>
+        {{-- <div class="settings">
+            <div class="settings-icon-wrapper">
+                <div class="settings-icon">
+                    <i class="ti ti-settings"></i>
+                </div>
+            </div>
+            <div class="settings-content">
+                <ul>
+                    <li class="fix-header">
+                        <div class="fix-header-wrapper">
+                            <div class="form-check form-switch lg">
+                                <label class="form-check-label" for="settingsFixHeader">Fixed Header</label>
+                                <input class="form-check-input toggle-settings" name="Header" type="checkbox"
+                                    id="settingsFixHeader">
+                            </div>
+        
+                        </div>
+                    </li>
+                    <li class="fix-footer">
+                        <div class="fix-footer-wrapper">
+                            <div class="form-check form-switch lg">
+                                <label class="form-check-label" for="settingsFixFooter">Fixed Footer</label>
+                                <input class="form-check-input toggle-settings" name="Footer" type="checkbox"
+                                    id="settingsFixFooter">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="theme-switch">
+                            <label for="">Theme Color</label>
+                            <div>
+                                <div class="form-check form-check-inline lg">
+                                    <input class="form-check-input lg theme-color" type="radio" name="ThemeColor" id="light"
+                                        value="light">
+                                    <label class="form-check-label" for="light">Light</label>
+                                </div>
+                                <div class="form-check form-check-inline lg">
+                                    <input class="form-check-input lg theme-color" type="radio" name="ThemeColor" id="dark"
+                                        value="dark">
+                                    <label class="form-check-label" for="dark">Dark</label>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="fix-footer-wrapper">
+                            <div class="form-check form-switch lg">
+                                <label class="form-check-label" for="settingsFixFooter">Collapse Sidebar</label>
+                                <input class="form-check-input toggle-settings" name="Sidebar" type="checkbox"
+                                    id="settingsFixFooter">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div> 
+        <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="../vendor/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script> --}}
+        
+
 
         <script>
             document.getElementById('searchButton').addEventListener('click', function(e) {

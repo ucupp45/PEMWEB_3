@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KesehatanController;
 use App\Http\Controllers\NilaiController;
@@ -53,4 +54,12 @@ Route::resource('nilai', NilaiController::class);
 Route::resource('jadwal', JadwalController::class);
 Route::resource('kesehatan', KesehatanController::class);
 Route::resource('konsultasi', KonsultasController::class);
+
+Route::get('/upload', [FileUploadController::class, 'create']);
+Route::post('/upload', [FileUploadController::class, 'store']);
+
+Route::get('/upload', [FileUploadController::class, 'showForm'])->name('file.upload.form');
+Route::post('/upload', [FileUploadController::class, 'uploadFile'])->name('file.upload');
+
+Route::post('/siswa/send-excel', [SiswaController::class, 'sendExcel'])->name('siswa.sendExcel');
 require __DIR__.'/auth.php';
